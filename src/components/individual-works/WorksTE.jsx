@@ -25,7 +25,7 @@ export default function WorksTE() {
   return (
     <>
       <mesh
-        geometry={ambienceOfLight.nodes.ambienceOfLight.geometry}
+        geometry={ambienceOfLight.nodes.ambienceOfLightSmall.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
         onPointerEnter={ambienceOfLightMouseEnterHandler}
