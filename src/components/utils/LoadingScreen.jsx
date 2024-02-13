@@ -17,7 +17,7 @@ export default function LoadingScreen() {
           ></div>
         </div>
         <p className="text-[#010101] text-[10px] font-bold">
-          OOBJECT Rotterdam 2024 digital archive loaded {progress.toFixed(2)} %
+          OBJECT Rotterdam 2024 digital archive loaded {progress.toFixed(2)} %
         </p>
       </div>
     </Html>
