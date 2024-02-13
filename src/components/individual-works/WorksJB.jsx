@@ -36,20 +36,6 @@ export default function WorksJB() {
   const bakedTexture = useTexture("./models/works-jb/baked-works-jb.jpg");
   bakedTexture.flipY = false;
 
-  // Click event handlers
-  const theFallClickHandler = () => {
-    console.log("The Fall is clicked");
-  };
-  const foolishPleasureClickHandler = () => {
-    console.log("Foolish pleasure is clicked");
-  };
-  const creamClickHandler = () => {
-    console.log("Cream is clicked");
-  };
-  const untitledClickHandler = () => {
-    console.log("Untitled is clicked");
-  };
-
   // Mouse pointer enter event handlers
   const theFallMouseEnterHandler = () => {
     titleToggleHandler("metamorphosis");
@@ -84,7 +70,6 @@ export default function WorksJB() {
         geometry={worksJB.nodes.theFall.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        onClick={theFallClickHandler}
         onPointerEnter={theFallMouseEnterHandler}
         onPointerLeave={theFallMouseLeaveHandler}
       >
@@ -120,7 +105,6 @@ export default function WorksJB() {
         geometry={worksJB.nodes.foolishPleasure.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        onClick={foolishPleasureClickHandler}
         onPointerEnter={foolishPleasureMouseEnterHandler}
         onPointerLeave={foolishPleasureMouseLeaveHandler}
       >
@@ -156,7 +140,6 @@ export default function WorksJB() {
         geometry={worksJB.nodes.cream.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        onClick={creamClickHandler}
         onPointerEnter={creamMouseEnterHandler}
         onPointerLeave={creamMouseLeaveHandler}
       >
@@ -192,7 +175,6 @@ export default function WorksJB() {
         geometry={worksJB.nodes.untitled.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        onClick={untitledClickHandler}
         onPointerEnter={untitledMouseEnterHandler}
         onPointerLeave={untitledMouseLeaveHandler}
       >

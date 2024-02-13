@@ -34,17 +34,6 @@ export default function WorksSM() {
   const bakedTexture = useTexture("./models/works-sm/baked-works-sm.jpg");
   bakedTexture.flipY = false;
 
-  // Click event handlers
-  const inflatableLeatherClickHandler = () => {
-    console.log("Inflatable Leathers are clicked");
-  };
-  const edgeStoolsClickHandler = () => {
-    console.log("Edge stools are clicked");
-  };
-  const wallObjectsClickHandler = () => {
-    console.log("Wall objects are clicked");
-  };
-
   // Mouse pointer enter event handlers
   const inflatableLeatherMouseEnterHandler = () => {
     titleToggleHandler("inflatableLeather");
@@ -73,7 +62,6 @@ export default function WorksSM() {
         geometry={worksSM.nodes.inflatableLeather.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        onClick={inflatableLeatherClickHandler}
         onPointerEnter={inflatableLeatherMouseEnterHandler}
         onPointerLeave={inflatableLeatherMouseLeaveHandler}
       >
@@ -109,7 +97,6 @@ export default function WorksSM() {
         geometry={worksSM.nodes.edgeStools.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        onClick={edgeStoolsClickHandler}
         onPointerEnter={edgeStoolsMouseEnterHandler}
         onPointerLeave={edgeStoolsMouseLeaveHandler}
       >
@@ -145,7 +132,6 @@ export default function WorksSM() {
         geometry={worksSM.nodes.wallObjects.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        onClick={wallObjectsClickHandler}
         onPointerEnter={wallObjectsMouseEnterHandler}
         onPointerLeave={wallObjectsMouseLeaveHandler}
       >

@@ -12,11 +12,6 @@ export default function WorksTE() {
   const bakedTexture = useTexture("./models/works-te/baked-works-te.jpg");
   bakedTexture.flipY = false;
 
-  // Click event handler
-  const ambienceOfLightClickHandler = () => {
-    console.log("Ambience of Light is clicked");
-  };
-
   // Mouse pointer enter event handler
   const ambienceOfLightMouseEnterHandler = () => {
     setIsTitle(true);
@@ -33,7 +28,6 @@ export default function WorksTE() {
         geometry={ambienceOfLight.nodes.ambienceOfLight.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        onClick={ambienceOfLightClickHandler}
         onPointerEnter={ambienceOfLightMouseEnterHandler}
         onPointerLeave={ambienceOfLightMouseLeaveHandler}
       >
