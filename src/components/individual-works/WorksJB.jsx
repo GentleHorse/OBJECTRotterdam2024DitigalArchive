@@ -175,8 +175,8 @@ export default function WorksJB() {
         geometry={worksJB.nodes.untitled.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
-        onPointerEnter={untitledMouseEnterHandler}
-        onPointerLeave={untitledMouseLeaveHandler}
+        // onPointerEnter={untitledMouseEnterHandler}
+        // onPointerLeave={untitledMouseLeaveHandler}
       >
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
