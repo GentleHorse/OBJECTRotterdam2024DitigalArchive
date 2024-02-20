@@ -7,44 +7,44 @@ export default function HakaBuilding() {
 
   // Load the building texture
   const bakedHakaBuildingTexture = useTexture(
-    "./models/haka-building/baked-building.jpg"
+    "./models/haka-building/baked-haka-building.jpg"
   );
   bakedHakaBuildingTexture.flipY = false;
 
-  // Load the building columns texture
-  const bakedHakaBuildingColumnsTexture = useTexture(
-    "./models/haka-building/baked-building-columns.jpg"
-  );
-  bakedHakaBuildingColumnsTexture.flipY = false;
+  // // Load the building columns texture
+  // const bakedHakaBuildingColumnsTexture = useTexture(
+  //   "./models/haka-building/baked-building-columns.jpg"
+  // );
+  // bakedHakaBuildingColumnsTexture.flipY = false;
 
-  // Load the building floor texture
-  const bakedHakaBuildingFloorTexture = useTexture(
-    "./models/haka-building/baked-building-floor.jpg"
-  );
-  bakedHakaBuildingFloorTexture.flipY = false;
+  // // Load the building floor texture
+  // const bakedHakaBuildingFloorTexture = useTexture(
+  //   "./models/haka-building/baked-building-floor.jpg"
+  // );
+  // bakedHakaBuildingFloorTexture.flipY = false;
 
-  // Load the spotlight texture
-  const bakedHakaBuildingSpotlightTexture = useTexture(
-    "./models/haka-building/baked-building-spotlight.jpg"
-  );
-  bakedHakaBuildingSpotlightTexture.flipY = false;
+  // // Load the spotlight texture
+  // const bakedHakaBuildingSpotlightTexture = useTexture(
+  //   "./models/haka-building/baked-building-spotlight.jpg"
+  // );
+  // bakedHakaBuildingSpotlightTexture.flipY = false;
 
-  // Load the work support JB texture
-  const bakedHakaBuildingWorkSupportJBTexture = useTexture(
-    "./models/haka-building/baked-building-work-support-JB.jpg"
-  );
-  bakedHakaBuildingWorkSupportJBTexture.flipY = false;
+  // // Load the work support JB texture
+  // const bakedHakaBuildingWorkSupportJBTexture = useTexture(
+  //   "./models/haka-building/baked-building-work-support-JB.jpg"
+  // );
+  // bakedHakaBuildingWorkSupportJBTexture.flipY = false;
 
-  // Load the work support TE texture
-  const bakedHakaBuildingWorkSupportTETexture = useTexture(
-    "./models/haka-building/baked-building-work-support-TE.jpg"
-  );
-  bakedHakaBuildingWorkSupportTETexture.flipY = false;
+  // // Load the work support TE texture
+  // const bakedHakaBuildingWorkSupportTETexture = useTexture(
+  //   "./models/haka-building/baked-building-work-support-TE.jpg"
+  // );
+  // bakedHakaBuildingWorkSupportTETexture.flipY = false;
 
   return (
     <>
       <mesh
-        geometry={hakaBuilding.nodes.building.geometry}
+        geometry={hakaBuilding.nodes.buildingRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
       >
@@ -52,46 +52,46 @@ export default function HakaBuilding() {
       </mesh>
 
       <mesh
-        geometry={hakaBuilding.nodes.columns.geometry}
+        geometry={hakaBuilding.nodes.columnsRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
       >
-        <meshBasicMaterial map={bakedHakaBuildingColumnsTexture} />
+        <meshBasicMaterial map={bakedHakaBuildingTexture} />
       </mesh>
 
       <mesh
-        geometry={hakaBuilding.nodes.floor.geometry}
+        geometry={hakaBuilding.nodes.floorRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
       >
-        <meshBasicMaterial map={bakedHakaBuildingFloorTexture} />
+        <meshBasicMaterial map={bakedHakaBuildingTexture} />
       </mesh>
 
       <mesh
-        geometry={hakaBuilding.nodes.spotlights.geometry}
+        geometry={hakaBuilding.nodes.spotlightsRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
       >
         <meshBasicMaterial
-          map={bakedHakaBuildingSpotlightTexture}
+          map={bakedHakaBuildingTexture}
           side={THREE.DoubleSide}
         />
       </mesh>
 
       <mesh
-        geometry={hakaBuilding.nodes.workSupportJB.geometry}
+        geometry={hakaBuilding.nodes.workSupportJBRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
       >
-        <meshBasicMaterial map={bakedHakaBuildingWorkSupportJBTexture} />
+        <meshBasicMaterial map={bakedHakaBuildingTexture} />
       </mesh>
 
       <mesh
-        geometry={hakaBuilding.nodes.workSupportTE.geometry}
+        geometry={hakaBuilding.nodes.workSupportTERe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
       >
-        <meshBasicMaterial map={bakedHakaBuildingWorkSupportTETexture} />
+        <meshBasicMaterial map={bakedHakaBuildingTexture} />
       </mesh>
     </>
   );
