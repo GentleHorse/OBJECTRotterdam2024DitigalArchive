@@ -6,6 +6,7 @@ import WorksSM from "./components/individual-works/WorksSM.jsx";
 import WorksJB from "./components/individual-works/WorksJB.jsx";
 import Banners from "./components/banners/Banners.jsx";
 import Placeholder from "./components/utils/PlaceHolder.jsx";
+import WorksBanners from "./components/works-banners/WorksBanners.jsx";
 
 export default function Experience() {
   return (
@@ -22,7 +23,7 @@ export default function Experience() {
       <group scale={1} position={[0, -5, 0]}>
         <HakaBuilding />
 
-        <Suspense
+        {/* <Suspense
           fallback={
             <group position={[15, 8, -20]}>
               <Placeholder position={[-0.8, -2.5, -2]} scale={9.5} />
@@ -31,9 +32,9 @@ export default function Experience() {
           }
         >
           <WorksTE />
-        </Suspense>
+        </Suspense> */}
 
-        <Suspense
+        {/* <Suspense
           fallback={
             <group position={[15, 5, 8]}>
               <Placeholder position={[-12, -1, -6]} scale={[12, 7, 12]} />
@@ -53,9 +54,9 @@ export default function Experience() {
           }
         >
           <WorksSM />
-        </Suspense>
+        </Suspense> */}
 
-        <Suspense
+        {/* <Suspense
           fallback={
             <group position={[-12.5, 12.5, 0]}>
               <Placeholder position={[-1.5, 0, -27]} scale={[18, 25, 2]} />
@@ -65,9 +66,11 @@ export default function Experience() {
           }
         >
           <WorksJB />
-        </Suspense>
+        </Suspense> */}
 
-        <Banners />
+        {/* <Banners /> */}
+
+        <WorksBanners />
       </group>
     </>
   );
