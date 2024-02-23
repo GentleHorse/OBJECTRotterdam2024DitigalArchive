@@ -47,32 +47,18 @@ export default function WorksBanners() {
   };
 
   // Load the meshes ----------------------------------------------
-  const worksJB = useGLTF("./models/works-jb/worksJB.glb");
-  const worksSM = useGLTF("./models/works-sm/worksSM.glb");
-  const ambienceOfLight = useGLTF("./models/works-te/ambienceOfLight.glb");
+  const worksJB = useGLTF("./models/works-banners/worksJB.glb");
+  const worksSM = useGLTF("./models/works-banners/worksSM.glb");
+  const worksTE = useGLTF("./models/works-banners/worksTE.glb");
 
-  const exhibitionBanner = useGLTF("./models/banners/exhibitionBanner.glb");
-  const designersBanner = useGLTF("./models/banners/designersBanner.glb");
+  const exhibitionBanner = useGLTF("./models/works-banners/exhibitionBanner.glb");
+  const designersBanner = useGLTF("./models/works-banners/designersBanner.glb");
 
-  // Load the textures --------------------------------------------
-  const bakedTextureJB = useTexture("./models/works-jb/baked-works-jb.jpg");
-  bakedTextureJB.flipY = false;
-
-  const bakedTextureSM = useTexture("./models/works-sm/baked-works-sm.jpg");
-  bakedTextureSM.flipY = false;
-
-  const bakedTextureTE = useTexture("./models/works-te/baked-works-te.jpg");
-  bakedTextureTE.flipY = false;
-
-  const bakedExhibitionBannerTexture = useTexture(
-    "./models/banners/baked-banners-exhibition.jpg"
-  );
-  bakedExhibitionBannerTexture.flipY = false;
-
-  const bakedDesignersBannerTexture = useTexture(
-    "./models/banners/baked-banner-individual-designers.jpg"
-  );
-  bakedDesignersBannerTexture.flipY = false;
+  // Load the texture --------------------------------------------
+  const bakedTexture = useTexture(
+    "./models/works-banners/baked-works-banners.jpg"
+  )
+  bakedTexture.flipY = false;
 
   // Mouse click event handlers (banners) -------------------------
   const exhibitionBannerClickHandler = () => {
@@ -166,13 +152,13 @@ export default function WorksBanners() {
         }
       >
         <mesh
-          geometry={worksJB.nodes.theFall.geometry}
+          geometry={worksJB.nodes.metamorphosis.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
           onPointerEnter={theFallMouseEnterHandler}
           onPointerLeave={theFallMouseLeaveHandler}
         >
-          <meshBasicMaterial map={bakedTextureJB} />
+          <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
         {isTitle.metamorphosis && (
@@ -201,13 +187,13 @@ export default function WorksBanners() {
         )}
 
         <mesh
-          geometry={worksJB.nodes.foolishPleasure.geometry}
+          geometry={worksJB.nodes.foolishPleasureRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
           onPointerEnter={foolishPleasureMouseEnterHandler}
           onPointerLeave={foolishPleasureMouseLeaveHandler}
         >
-          <meshBasicMaterial map={bakedTextureJB} side={THREE.DoubleSide} />
+          <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
         </mesh>
 
         {isTitle.foolishPleasure && (
@@ -236,13 +222,13 @@ export default function WorksBanners() {
         )}
 
         <mesh
-          geometry={worksJB.nodes.cream.geometry}
+          geometry={worksJB.nodes.creamRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
           onPointerEnter={creamMouseEnterHandler}
           onPointerLeave={creamMouseLeaveHandler}
         >
-          <meshBasicMaterial map={bakedTextureJB} />
+          <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
         {isTitle.cream && (
@@ -271,11 +257,11 @@ export default function WorksBanners() {
         )}
 
         <mesh
-          geometry={worksJB.nodes.untitled.geometry}
+          geometry={worksJB.nodes.untitledRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
         >
-          <meshBasicMaterial map={bakedTextureJB} />
+          <meshBasicMaterial map={bakedTexture} />
         </mesh>
       </Suspense>
 
@@ -300,13 +286,13 @@ export default function WorksBanners() {
         }
       >
         <mesh
-          geometry={worksSM.nodes.inflatableLeather.geometry}
+          geometry={worksSM.nodes.inflatableLeatherRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
           onPointerEnter={inflatableLeatherMouseEnterHandler}
           onPointerLeave={inflatableLeatherMouseLeaveHandler}
         >
-          <meshBasicMaterial map={bakedTextureSM} />
+          <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
         {isTitle.inflatableLeather && (
@@ -335,13 +321,13 @@ export default function WorksBanners() {
         )}
 
         <mesh
-          geometry={worksSM.nodes.edgeStools.geometry}
+          geometry={worksSM.nodes.edgeStoolsRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
           onPointerEnter={edgeStoolsMouseEnterHandler}
           onPointerLeave={edgeStoolsMouseLeaveHandler}
         >
-          <meshBasicMaterial map={bakedTextureSM} />
+          <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
         {isTitle.edgeStools && (
@@ -370,13 +356,13 @@ export default function WorksBanners() {
         )}
 
         <mesh
-          geometry={worksSM.nodes.wallObjects.geometry}
+          geometry={worksSM.nodes.wallObjectsRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
           onPointerEnter={wallObjectsMouseEnterHandler}
           onPointerLeave={wallObjectsMouseLeaveHandler}
         >
-          <meshBasicMaterial map={bakedTextureSM} />
+          <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
         {isTitle.wallObjects && (
@@ -415,13 +401,13 @@ export default function WorksBanners() {
         }
       >
         <mesh
-          geometry={ambienceOfLight.nodes.ambienceOfLightSmall.geometry}
+          geometry={worksTE.nodes.ambienceOfLightRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
           onPointerEnter={ambienceOfLightMouseEnterHandler}
           onPointerLeave={ambienceOfLightMouseLeaveHandler}
         >
-          <meshBasicMaterial map={bakedTextureTE} />
+          <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
         {isTitle.ambienceOfLight && (
@@ -451,47 +437,47 @@ export default function WorksBanners() {
       </Suspense>
 
       <mesh
-        geometry={exhibitionBanner.nodes.exhibitionBanner.geometry}
+        geometry={exhibitionBanner.nodes.exhibitionBannerRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
         onClick={exhibitionBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
-        <meshBasicMaterial map={bakedExhibitionBannerTexture} />
+        <meshBasicMaterial map={bakedTexture} />
       </mesh>
 
       <mesh
-        geometry={designersBanner.nodes.jbBanner.geometry}
+        geometry={designersBanner.nodes.jbBannerRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
         onClick={JBBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
-        <meshBasicMaterial map={bakedDesignersBannerTexture} side={THREE.DoubleSide} />
+        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
       </mesh>
 
       <mesh
-        geometry={designersBanner.nodes.smBanner.geometry}
+        geometry={designersBanner.nodes.smBannerRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
         onClick={SMBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
-        <meshBasicMaterial map={bakedDesignersBannerTexture} side={THREE.DoubleSide} />
+        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
       </mesh>
 
       <mesh
-        geometry={designersBanner.nodes.teBanner.geometry}
+        geometry={designersBanner.nodes.teBannerRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
         onClick={TEBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
-        <meshBasicMaterial map={bakedDesignersBannerTexture} side={THREE.DoubleSide} />
+        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
       </mesh>
     </>
   );

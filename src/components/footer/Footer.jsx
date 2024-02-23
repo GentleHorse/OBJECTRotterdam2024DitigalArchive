@@ -9,26 +9,26 @@ export default function Footer() {
         className="no-underline text-[#161616] mt-[2px]"
       >
         <img src={hakaBuildingIconImage} className="h-[40px] ml-[12px]" />
-        <p className="font-roboto ml-[20px] mt-[3px] mb-0 text-sm text-stone-300">
+        <p className="font-roboto ml-[20px] mt-[3px] mb-0 text-xs text-stone-300">
           Friday - Sunday 11 - 18 hrs
         </p>
-        <p className="font-roboto ml-[20px] mt-[3px] mb-0 text-sm text-stone-300">
+        <p className="font-roboto ml-[20px] mt-[3px] mb-0 text-xs text-stone-300">
           HAKA, Vierhavenstraat 38 - 42
         </p>
       </a>
       <section className="mr-5 flex flex-col items-end">
         <a href="https://jeroenvdbogaert.com/" target="_blank">
-          <button className="bg-none border-none outline-none shadow-none font-roboto text-sm text-stone-300 hover:text-[#4b4ee3]">
+          <button className="bg-none border-none outline-none shadow-none font-roboto text-xs text-stone-300 hover:text-[#4b4ee3]">
             Jeroen van den Bogaert
           </button>
         </a>
         <a href="https://www.satomiminoshima.com/" target="_blank">
-          <button className="bg-none border-none outline-none shadow-none font-roboto text-sm text-stone-300 hover:text-[#4b4ee3]">
+          <button className="bg-none border-none outline-none shadow-none font-roboto text-xs text-stone-300 hover:text-[#4b4ee3]">
             Satomi Minoshima
           </button>
         </a>
         <a href="https://www.toshihito.design/" target="_blank">
-          <button className="bg-none border-none outline-none shadow-none font-roboto text-sm text-stone-300 hover:text-[#4b4ee3]">
+          <button className="bg-none border-none outline-none shadow-none font-roboto text-xs text-stone-300 hover:text-[#4b4ee3]">
             Toshihito Endo
           </button>
         </a>

@@ -15,7 +15,7 @@ export default function Header() {
         </a>
       </section>
       <section>
-        <p className="font-roboto mt-[10px] text-stone-300">2-4 February, 2024</p>
+        <p className="font-roboto mt-[10px] text-xs text-stone-300">2-4 February, 2024</p>
       </section>
     </header>
   );
