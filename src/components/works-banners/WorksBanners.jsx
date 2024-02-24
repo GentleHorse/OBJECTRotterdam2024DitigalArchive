@@ -151,7 +151,7 @@ export default function WorksBanners() {
 
   return (
     <>
-      <CameraControls ref={cameraControlsRef} makeDefault />
+      {/* <CameraControls ref={cameraControlsRef} makeDefault /> */}
 
       <Camera />
 
