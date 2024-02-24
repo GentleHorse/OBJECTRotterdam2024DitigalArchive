@@ -1,9 +1,13 @@
-import { useState, useEffect, Suspense } from "react";
-import { useGLTF, useTexture, Text } from "@react-three/drei";
+import { useState, useEffect, Suspense, useRef } from "react";
 import * as THREE from "three";
+import { useFrame } from "@react-three/fiber";
+import { useGLTF, useTexture, Text, CameraControls } from "@react-three/drei";
 import Placeholder from "../../components/utils/PlaceHolder.jsx";
+import Camera from "../utils/Camera.jsx";
 
 export default function WorksBanners() {
+  const cameraControlsRef = useRef();
+
   // Logic of toggling titles of works ----------------------------
   const [isTitle, setIsTitle] = useState({
     metamorphosis: false,
@@ -51,14 +55,19 @@ export default function WorksBanners() {
   const worksSM = useGLTF("./models/works-banners/worksSM.glb");
   const worksTE = useGLTF("./models/works-banners/worksTE.glb");
 
-  const exhibitionBanner = useGLTF("./models/works-banners/exhibitionBanner.glb");
+  const exhibitionBanner = useGLTF(
+    "./models/works-banners/exhibitionBanner.glb"
+  );
   const designersBanner = useGLTF("./models/works-banners/designersBanner.glb");
 
   // Load the texture --------------------------------------------
   const bakedTexture = useTexture(
     "./models/works-banners/baked-works-banners.jpg"
-  )
+  );
   bakedTexture.flipY = false;
+
+  // Mouse click event handlers (works) ---------------------------
+
 
   // Mouse click event handlers (banners) -------------------------
   const exhibitionBannerClickHandler = () => {
@@ -142,6 +151,10 @@ export default function WorksBanners() {
 
   return (
     <>
+      <CameraControls ref={cameraControlsRef} makeDefault />
+
+      <Camera />
+
       <Suspense
         fallback={
           <group position={[-12.5, 12.5, 0]}>
@@ -157,6 +170,16 @@ export default function WorksBanners() {
           rotation={[0, Math.PI * 0.5, 0]}
           onPointerEnter={theFallMouseEnterHandler}
           onPointerLeave={theFallMouseLeaveHandler}
+          onClick={() => {
+            cameraControlsRef.current.lerpLookAt(
+              -2, 0, 0,
+              1, 1, 0,
+              0, 2, 5,
+              -1, 0, 0,
+              Math.random(),
+              true
+            )
+          }}
         >
           <meshBasicMaterial map={bakedTexture} />
         </mesh>
@@ -264,7 +287,6 @@ export default function WorksBanners() {
           <meshBasicMaterial map={bakedTexture} />
         </mesh>
       </Suspense>
-
 
       <Suspense
         fallback={
@@ -391,7 +413,6 @@ export default function WorksBanners() {
         )}
       </Suspense>
 
-
       <Suspense
         fallback={
           <group position={[15, 8, -20]}>
@@ -481,4 +502,11 @@ export default function WorksBanners() {
       </mesh>
     </>
   );
+}
+
+function CameraRig({ position: [x, y, z] }) {
+  useFrame((state) => {
+    state.camera.position.lerp({ x, y, z }, 0.1)
+    state.camera.lookAt(0, 0, 0)
+  })
 }
