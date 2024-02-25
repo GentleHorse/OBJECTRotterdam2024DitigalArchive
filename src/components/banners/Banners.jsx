@@ -50,7 +50,7 @@ export default function Banners({ bakedTexture }) {
 
   return (
     <>
-      <CameraControls ref={cameraControlsRef} makeDefault />
+      {/* <CameraControls ref={cameraControlsRef} makeDefault /> */}
 
       <group position={[0, 0, 0]} rotation={[0, Math.PI * 0.5, 0]}>
         <mesh geometry={exhibitionBanner.nodes.exhibitionBannerRe.geometry}>

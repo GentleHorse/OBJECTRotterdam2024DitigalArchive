@@ -4,7 +4,6 @@ import * as THREE from "three";
 import Placeholder from "../../components/utils/PlaceHolder.jsx";
 
 export default function WorksJB({ bakedTexture }) {
-
   const cameraControlsRef = useRef();
 
   // Logic of toggling titles of works
@@ -59,7 +58,7 @@ export default function WorksJB({ bakedTexture }) {
 
   return (
     <>
-      <CameraControls ref={cameraControlsRef} makeDefault />
+      {/* <CameraControls ref={cameraControlsRef} makeDefault /> */}
 
       <Suspense
         fallback={

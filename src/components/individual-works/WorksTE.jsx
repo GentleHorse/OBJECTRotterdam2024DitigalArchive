@@ -2,22 +2,66 @@ import { useState, Suspense, useRef } from "react";
 import { useGLTF, Text, CameraControls } from "@react-three/drei";
 import Placeholder from "../../components/utils/PlaceHolder.jsx";
 
-export default function WorksTE({ bakedTexture }) {
+import CustomCamera from "../utils/CustomCamera.jsx";
 
+export default function WorksTE({ bakedTexture }) {
   const cameraControlsRef = useRef();
+
+  const cameraFocusArrayObject = {
+    zoomInCameraPosition: [14.7, 4.0, -45.7],
+    zoomInCameraTarget: [15.68, -1.88, -13.09],
+    zoomOutCameraPosition: [42, 15, -68],
+    zoomOutCameraTarget: [0, 0, 0],
+  }
 
   // Logic of toggling works title
   const [isTitle, setIsTitle] = useState(false);
 
+  // Focus object state
+  const [isFocused, setIsFocused] = useState(false);
+
   // Load the mesh
   const worksTE = useGLTF("./models/works-banners/worksTE.glb");
 
-  // Mouse pointer enter event handlers
+  // Mouse click event handler
+  const clickHandler = () => {
+    setIsFocused((prevIsFocused) => {
+      console.log(isFocused);
+
+      if (isFocused === false) {
+        cameraControlsRef.current.setLookAt(
+          cameraFocusArrayObject.zoomInCameraPosition[0],
+          cameraFocusArrayObject.zoomInCameraPosition[1],
+          cameraFocusArrayObject.zoomInCameraPosition[2],
+          cameraFocusArrayObject.zoomInCameraTarget[0],
+          cameraFocusArrayObject.zoomInCameraTarget[1],
+          cameraFocusArrayObject.zoomInCameraTarget[2],
+          true
+        );
+      }
+
+      if (isFocused === true) {
+        cameraControlsRef.current.setLookAt(
+          cameraFocusArrayObject.zoomOutCameraPosition[0],
+          cameraFocusArrayObject.zoomOutCameraPosition[1],
+          cameraFocusArrayObject.zoomOutCameraPosition[2],
+          cameraFocusArrayObject.zoomOutCameraTarget[0],
+          cameraFocusArrayObject.zoomOutCameraTarget[1],
+          cameraFocusArrayObject.zoomOutCameraTarget[2],
+          true
+        );
+      }
+
+      return !prevIsFocused;
+    });
+  };
+
+  // Mouse pointer enter event handler
   const ambienceOfLightMouseEnterHandler = () => {
     setIsTitle(true);
   };
 
-  // Mouse pointer leave event handlers
+  // Mouse pointer leave event handler
   const ambienceOfLightMouseLeaveHandler = () => {
     setIsTitle(false);
   };
@@ -25,6 +69,8 @@ export default function WorksTE({ bakedTexture }) {
   return (
     <>
       <CameraControls ref={cameraControlsRef} makeDefault />
+
+      {/* <CustomCamera /> */}
 
       <Suspense
         fallback={
@@ -38,6 +84,7 @@ export default function WorksTE({ bakedTexture }) {
           geometry={worksTE.nodes.ambienceOfLightRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
+          onClick={clickHandler}
           onPointerEnter={ambienceOfLightMouseEnterHandler}
           onPointerLeave={ambienceOfLightMouseLeaveHandler}
         >
@@ -72,4 +119,3 @@ export default function WorksTE({ bakedTexture }) {
     </>
   );
 }
-

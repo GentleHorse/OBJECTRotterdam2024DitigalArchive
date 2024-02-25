@@ -5,7 +5,6 @@ import Placeholder from "../../components/utils/PlaceHolder.jsx";
 export default function WorksSM({ bakedTexture }) {
   const cameraControlsRef = useRef();
 
-
   // Logic of toggling titles of works
   const [isTitle, setIsTitle] = useState({
     inflatableLeather: false,
@@ -58,7 +57,7 @@ export default function WorksSM({ bakedTexture }) {
 
   return (
     <>
-      <CameraControls ref={cameraControlsRef} makeDefault />
+      {/* <CameraControls ref={cameraControlsRef} makeDefault /> */}
 
       <Suspense
         fallback={
@@ -187,4 +186,3 @@ export default function WorksSM({ bakedTexture }) {
     </>
   );
 }
-

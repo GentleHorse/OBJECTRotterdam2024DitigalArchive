@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useThree } from "@react-three/fiber";
 import { useControls } from "leva";
 
-export default function Camera() {
+export default function CustomCamera() {
   const { camera } = useThree();
   const { Position_X, Position_Y, Position_Z, Target_X, Target_Y, Target_Z } =
     useControls("camera", {
