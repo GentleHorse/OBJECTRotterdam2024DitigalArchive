@@ -1,8 +1,11 @@
-import { useState, Suspense } from "react";
-import { useGLTF, Text } from "@react-three/drei";
+import { useState, Suspense, useRef } from "react";
+import { useGLTF, Text, CameraControls } from "@react-three/drei";
 import Placeholder from "../../components/utils/PlaceHolder.jsx";
 
 export default function WorksSM({ bakedTexture }) {
+  const cameraControlsRef = useRef();
+
+
   // Logic of toggling titles of works
   const [isTitle, setIsTitle] = useState({
     inflatableLeather: false,
@@ -55,6 +58,8 @@ export default function WorksSM({ bakedTexture }) {
 
   return (
     <>
+      <CameraControls ref={cameraControlsRef} makeDefault />
+
       <Suspense
         fallback={
           <group position={[15, 5, 8]}>

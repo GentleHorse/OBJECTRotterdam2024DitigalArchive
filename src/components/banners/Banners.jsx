@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useState, useEffect, useRef } from "react";
+import { useGLTF, CameraControls } from "@react-three/drei";
 import * as THREE from "three";
 
 export default function Banners({ bakedTexture }) {
+  const cameraControlsRef = useRef();
+
   // Change mouse pointer
   const [hovered, setHovered] = useState(false);
 
@@ -47,58 +49,62 @@ export default function Banners({ bakedTexture }) {
   };
 
   return (
-    <group position={[0, 0, 0]} rotation={[0, Math.PI * 0.5, 0]}>
-      <mesh geometry={exhibitionBanner.nodes.exhibitionBannerRe.geometry}>
-        <meshBasicMaterial map={bakedTexture} />
-      </mesh>
+    <>
+      <CameraControls ref={cameraControlsRef} makeDefault />
 
-      <mesh
-        geometry={urlLinks.nodes.urlLinkExhibition.geometry}
-        onClick={exhibitionBannerClickHandler}
-        onPointerEnter={bannerMouseEnterHandler}
-        onPointerLeave={bannerMouseLeaveHandler}
-      >
-        <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
-      </mesh>
+      <group position={[0, 0, 0]} rotation={[0, Math.PI * 0.5, 0]}>
+        <mesh geometry={exhibitionBanner.nodes.exhibitionBannerRe.geometry}>
+          <meshBasicMaterial map={bakedTexture} />
+        </mesh>
 
-      <mesh geometry={designersBanner.nodes.jbBannerRe.geometry}>
-        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
-      </mesh>
+        <mesh
+          geometry={urlLinks.nodes.urlLinkExhibition.geometry}
+          onClick={exhibitionBannerClickHandler}
+          onPointerEnter={bannerMouseEnterHandler}
+          onPointerLeave={bannerMouseLeaveHandler}
+        >
+          <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
+        </mesh>
 
-      <mesh
-        geometry={urlLinks.nodes.urlLinkJB.geometry}
-        onClick={JBBannerClickHandler}
-        onPointerEnter={bannerMouseEnterHandler}
-        onPointerLeave={bannerMouseLeaveHandler}
-      >
-        <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
-      </mesh>
+        <mesh geometry={designersBanner.nodes.jbBannerRe.geometry}>
+          <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
+        </mesh>
 
-      <mesh geometry={designersBanner.nodes.smBannerRe.geometry}>
-        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
-      </mesh>
+        <mesh
+          geometry={urlLinks.nodes.urlLinkJB.geometry}
+          onClick={JBBannerClickHandler}
+          onPointerEnter={bannerMouseEnterHandler}
+          onPointerLeave={bannerMouseLeaveHandler}
+        >
+          <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
+        </mesh>
 
-      <mesh
-        geometry={urlLinks.nodes.urlLinkSM.geometry}
-        onClick={SMBannerClickHandler}
-        onPointerEnter={bannerMouseEnterHandler}
-        onPointerLeave={bannerMouseLeaveHandler}
-      >
-        <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
-      </mesh>
+        <mesh geometry={designersBanner.nodes.smBannerRe.geometry}>
+          <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
+        </mesh>
 
-      <mesh geometry={designersBanner.nodes.teBannerRe.geometry}>
-        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
-      </mesh>
+        <mesh
+          geometry={urlLinks.nodes.urlLinkSM.geometry}
+          onClick={SMBannerClickHandler}
+          onPointerEnter={bannerMouseEnterHandler}
+          onPointerLeave={bannerMouseLeaveHandler}
+        >
+          <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
+        </mesh>
 
-      <mesh
-        geometry={urlLinks.nodes.urlLinkTE.geometry}
-        onClick={TEBannerClickHandler}
-        onPointerEnter={bannerMouseEnterHandler}
-        onPointerLeave={bannerMouseLeaveHandler}
-      >
-        <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
-      </mesh>
-    </group>
+        <mesh geometry={designersBanner.nodes.teBannerRe.geometry}>
+          <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
+        </mesh>
+
+        <mesh
+          geometry={urlLinks.nodes.urlLinkTE.geometry}
+          onClick={TEBannerClickHandler}
+          onPointerEnter={bannerMouseEnterHandler}
+          onPointerLeave={bannerMouseLeaveHandler}
+        >
+          <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
+        </mesh>
+      </group>
+    </>
   );
 }

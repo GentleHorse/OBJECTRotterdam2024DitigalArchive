@@ -1,9 +1,12 @@
-import { useState, Suspense } from "react";
-import { useGLTF, Text } from "@react-three/drei";
+import { useState, Suspense, useRef } from "react";
+import { useGLTF, Text, CameraControls } from "@react-three/drei";
 import * as THREE from "three";
 import Placeholder from "../../components/utils/PlaceHolder.jsx";
 
 export default function WorksJB({ bakedTexture }) {
+
+  const cameraControlsRef = useRef();
+
   // Logic of toggling titles of works
   const [isTitle, setIsTitle] = useState({
     metamorphosis: false,
@@ -56,6 +59,8 @@ export default function WorksJB({ bakedTexture }) {
 
   return (
     <>
+      <CameraControls ref={cameraControlsRef} makeDefault />
+
       <Suspense
         fallback={
           <group position={[-12.5, 12.5, 0]}>

@@ -1,8 +1,11 @@
-import { useState, Suspense } from "react";
-import { useGLTF, Text } from "@react-three/drei";
+import { useState, Suspense, useRef } from "react";
+import { useGLTF, Text, CameraControls } from "@react-three/drei";
 import Placeholder from "../../components/utils/PlaceHolder.jsx";
 
 export default function WorksTE({ bakedTexture }) {
+
+  const cameraControlsRef = useRef();
+
   // Logic of toggling works title
   const [isTitle, setIsTitle] = useState(false);
 
@@ -21,6 +24,8 @@ export default function WorksTE({ bakedTexture }) {
 
   return (
     <>
+      <CameraControls ref={cameraControlsRef} makeDefault />
+
       <Suspense
         fallback={
           <group position={[15, 8, -20]}>
