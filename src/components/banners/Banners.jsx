@@ -20,8 +20,9 @@ export default function Banners({ bakedTexture }) {
     "./models/works-banners/exhibitionBanner.glb"
   );
   const designersBanner = useGLTF("./models/works-banners/designersBanner.glb");
+  const urlLinks = useGLTF("./models/works-banners/urlLinks.glb");
 
-  // Click event handlers
+  // Click handlers - url link marks of event
   const exhibitionBannerClickHandler = () => {
     openInNewTab("https://objectrotterdam.com/");
   };
@@ -46,50 +47,58 @@ export default function Banners({ bakedTexture }) {
   };
 
   return (
-    <>
-      <mesh
-        geometry={exhibitionBanner.nodes.exhibitionBannerRe.geometry}
-        position={[0, 0, 0]}
-        rotation={[0, Math.PI * 0.5, 0]}
-        onClick={exhibitionBannerClickHandler}
-        onPointerEnter={bannerMouseEnterHandler}
-        onPointerLeave={bannerMouseLeaveHandler}
-      >
+    <group position={[0, 0, 0]} rotation={[0, Math.PI * 0.5, 0]}>
+      <mesh geometry={exhibitionBanner.nodes.exhibitionBannerRe.geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 
       <mesh
-        geometry={designersBanner.nodes.jbBannerRe.geometry}
-        position={[0, 0, 0]}
-        rotation={[0, Math.PI * 0.5, 0]}
+        geometry={urlLinks.nodes.urlLinkExhibition.geometry}
+        onClick={exhibitionBannerClickHandler}
+        onPointerEnter={bannerMouseEnterHandler}
+        onPointerLeave={bannerMouseLeaveHandler}
+      >
+        <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
+      </mesh>
+
+      <mesh geometry={designersBanner.nodes.jbBannerRe.geometry}>
+        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
+      </mesh>
+
+      <mesh
+        geometry={urlLinks.nodes.urlLinkJB.geometry}
         onClick={JBBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
+        <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
+      </mesh>
+
+      <mesh geometry={designersBanner.nodes.smBannerRe.geometry}>
         <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
       </mesh>
 
       <mesh
-        geometry={designersBanner.nodes.smBannerRe.geometry}
-        position={[0, 0, 0]}
-        rotation={[0, Math.PI * 0.5, 0]}
+        geometry={urlLinks.nodes.urlLinkSM.geometry}
         onClick={SMBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
+        <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
+      </mesh>
+
+      <mesh geometry={designersBanner.nodes.teBannerRe.geometry}>
         <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
       </mesh>
 
       <mesh
-        geometry={designersBanner.nodes.teBannerRe.geometry}
-        position={[0, 0, 0]}
-        rotation={[0, Math.PI * 0.5, 0]}
+        geometry={urlLinks.nodes.urlLinkTE.geometry}
         onClick={TEBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
-        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
+        <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
       </mesh>
-    </>
+    </group>
   );
 }
