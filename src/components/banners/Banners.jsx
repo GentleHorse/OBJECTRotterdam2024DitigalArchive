@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
-export default function Banners() {
+export default function Banners({ bakedTexture }) {
   // Change mouse pointer
   const [hovered, setHovered] = useState(false);
 
@@ -15,20 +15,11 @@ export default function Banners() {
     window.open(url, "_blank", "noreferrer");
   };
 
-  // Load the mesh
-  const exhibitionBanner = useGLTF("./models/banners/exhibitionBanner.glb");
-  const designersBanner = useGLTF("./models/banners/designersBanner.glb");
-
-  // Load the texture
-  const bakedExhibitionBannerTexture = useTexture(
-    "./models/banners/baked-banners-exhibition.jpg"
+  // Load the meshes
+  const exhibitionBanner = useGLTF(
+    "./models/works-banners/exhibitionBanner.glb"
   );
-  bakedExhibitionBannerTexture.flipY = false;
-
-  const bakedDesignersBannerTexture = useTexture(
-    "./models/banners/baked-banner-individual-designers.jpg"
-  );
-  bakedDesignersBannerTexture.flipY = false;
+  const designersBanner = useGLTF("./models/works-banners/designersBanner.glb");
 
   // Click event handlers
   const exhibitionBannerClickHandler = () => {
@@ -57,47 +48,47 @@ export default function Banners() {
   return (
     <>
       <mesh
-        geometry={exhibitionBanner.nodes.exhibitionBanner.geometry}
+        geometry={exhibitionBanner.nodes.exhibitionBannerRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
         onClick={exhibitionBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
-        <meshBasicMaterial map={bakedExhibitionBannerTexture} />
+        <meshBasicMaterial map={bakedTexture} />
       </mesh>
 
       <mesh
-        geometry={designersBanner.nodes.jbBanner.geometry}
+        geometry={designersBanner.nodes.jbBannerRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
         onClick={JBBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
-        <meshBasicMaterial map={bakedDesignersBannerTexture} side={THREE.DoubleSide} />
+        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
       </mesh>
 
       <mesh
-        geometry={designersBanner.nodes.smBanner.geometry}
+        geometry={designersBanner.nodes.smBannerRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
         onClick={SMBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
-        <meshBasicMaterial map={bakedDesignersBannerTexture} side={THREE.DoubleSide} />
+        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
       </mesh>
 
       <mesh
-        geometry={designersBanner.nodes.teBanner.geometry}
+        geometry={designersBanner.nodes.teBannerRe.geometry}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.5, 0]}
         onClick={TEBannerClickHandler}
         onPointerEnter={bannerMouseEnterHandler}
         onPointerLeave={bannerMouseLeaveHandler}
       >
-        <meshBasicMaterial map={bakedDesignersBannerTexture} side={THREE.DoubleSide} />
+        <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
       </mesh>
     </>
   );

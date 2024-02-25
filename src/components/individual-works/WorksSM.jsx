@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useGLTF, useTexture, Text } from "@react-three/drei";
+import { useState, Suspense } from "react";
+import { useGLTF, Text } from "@react-three/drei";
+import Placeholder from "../../components/utils/PlaceHolder.jsx";
 
-export default function WorksSM() {
+export default function WorksSM({ bakedTexture }) {
   // Logic of toggling titles of works
   const [isTitle, setIsTitle] = useState({
     inflatableLeather: false,
@@ -15,7 +16,7 @@ export default function WorksSM() {
 
       for (const title in newIsTitle) {
         if (title === selector) {
-          if(newIsTitle[selector] === false){
+          if (newIsTitle[selector] === false) {
             newIsTitle[selector] = true;
           } else {
             newIsTitle[selector] = false;
@@ -28,11 +29,7 @@ export default function WorksSM() {
   };
 
   // Load the mesh
-  const worksSM = useGLTF("./models/works-sm/worksSM.glb");
-
-  // Load the texture
-  const bakedTexture = useTexture("./models/works-sm/baked-works-sm.jpg");
-  bakedTexture.flipY = false;
+  const worksSM = useGLTF("./models/works-banners/worksSM.glb");
 
   // Mouse pointer enter event handlers
   const inflatableLeatherMouseEnterHandler = () => {
@@ -58,110 +55,131 @@ export default function WorksSM() {
 
   return (
     <>
-      <mesh
-        geometry={worksSM.nodes.inflatableLeather.geometry}
-        position={[0, 0, 0]}
-        rotation={[0, Math.PI * 0.5, 0]}
-        onPointerEnter={inflatableLeatherMouseEnterHandler}
-        onPointerLeave={inflatableLeatherMouseLeaveHandler}
+      <Suspense
+        fallback={
+          <group position={[15, 5, 8]}>
+            <Placeholder position={[-12, -1, -6]} scale={[12, 7, 12]} />
+            <Placeholder position={[9, -2, 8]} scale={[8, 5, 8]} />
+            <Placeholder
+              position={[5.5, -2.7, -4.5]}
+              rotation-y={-Math.PI * 0.22}
+              scale={[2, 4, 3]}
+            />
+            <Placeholder
+              position={[-3.7, -2, 7]}
+              rotation-y={Math.PI * 0.1}
+              scale={[3.5, 5, 5.5]}
+            />
+            <Placeholder position={[18, 10, -5]} scale={12} />
+          </group>
+        }
       >
-        <meshBasicMaterial map={bakedTexture} />
-      </mesh>
+        <mesh
+          geometry={worksSM.nodes.inflatableLeatherRe.geometry}
+          position={[0, 0, 0]}
+          rotation={[0, Math.PI * 0.5, 0]}
+          onPointerEnter={inflatableLeatherMouseEnterHandler}
+          onPointerLeave={inflatableLeatherMouseLeaveHandler}
+        >
+          <meshBasicMaterial map={bakedTexture} />
+        </mesh>
 
-      {isTitle.inflatableLeather && (
-        <group position={[15, 12, 8]}>
-          <Text
-            position={[0, 0, 0]}
-            fontSize={1.5}
-            font="./fonts/cormorant-garamond-v16-latin-300.woff"
-            color="snow"
-            anchorX="center"
-            anchorY="middle"
-          >
-            Inflatable Leather
-          </Text>
-          <Text
-            position={[0, -1.5, 0]}
-            fontSize={0.8}
-            font="./fonts/cormorant-garamond-v16-latin-300.woff"
-            color="snow"
-            anchorX="center"
-            anchorY="middle"
-          >
-            designed by Satomi Minoshima
-          </Text>
-        </group>
-      )}
+        {isTitle.inflatableLeather && (
+          <group position={[15, 12, 8]}>
+            <Text
+              position={[0, 0, 0]}
+              fontSize={1.5}
+              font="./fonts/cormorant-garamond-v16-latin-300.woff"
+              color="snow"
+              anchorX="center"
+              anchorY="middle"
+            >
+              Inflatable Leather
+            </Text>
+            <Text
+              position={[0, -1.5, 0]}
+              fontSize={0.8}
+              font="./fonts/cormorant-garamond-v16-latin-300.woff"
+              color="snow"
+              anchorX="center"
+              anchorY="middle"
+            >
+              designed by Satomi Minoshima
+            </Text>
+          </group>
+        )}
 
-      <mesh
-        geometry={worksSM.nodes.edgeStools.geometry}
-        position={[0, 0, 0]}
-        rotation={[0, Math.PI * 0.5, 0]}
-        onPointerEnter={edgeStoolsMouseEnterHandler}
-        onPointerLeave={edgeStoolsMouseLeaveHandler}
-      >
-        <meshBasicMaterial map={bakedTexture} />
-      </mesh>
+        <mesh
+          geometry={worksSM.nodes.edgeStoolsRe.geometry}
+          position={[0, 0, 0]}
+          rotation={[0, Math.PI * 0.5, 0]}
+          onPointerEnter={edgeStoolsMouseEnterHandler}
+          onPointerLeave={edgeStoolsMouseLeaveHandler}
+        >
+          <meshBasicMaterial map={bakedTexture} />
+        </mesh>
 
-      {isTitle.edgeStools && (
-        <group position={[15, 9, 8]}>
-          <Text
-            position={[0, 0, 0]}
-            fontSize={1.5}
-            font="./fonts/cormorant-garamond-v16-latin-300.woff"
-            color="snow"
-            anchorX="center"
-            anchorY="middle"
-          >
-            Edge Stools
-          </Text>
-          <Text
-            position={[0, -1.5, 0]}
-            fontSize={0.8}
-            font="./fonts/cormorant-garamond-v16-latin-300.woff"
-            color="snow"
-            anchorX="center"
-            anchorY="middle"
-          >
-            designed by Satomi Minoshima
-          </Text>
-        </group>
-      )}
+        {isTitle.edgeStools && (
+          <group position={[15, 9, 8]}>
+            <Text
+              position={[0, 0, 0]}
+              fontSize={1.5}
+              font="./fonts/cormorant-garamond-v16-latin-300.woff"
+              color="snow"
+              anchorX="center"
+              anchorY="middle"
+            >
+              Edge Stools
+            </Text>
+            <Text
+              position={[0, -1.5, 0]}
+              fontSize={0.8}
+              font="./fonts/cormorant-garamond-v16-latin-300.woff"
+              color="snow"
+              anchorX="center"
+              anchorY="middle"
+            >
+              designed by Satomi Minoshima
+            </Text>
+          </group>
+        )}
 
-      <mesh
-        geometry={worksSM.nodes.wallObjects.geometry}
-        position={[0, 0, 0]}
-        rotation={[0, Math.PI * 0.5, 0]}
-        onPointerEnter={wallObjectsMouseEnterHandler}
-        onPointerLeave={wallObjectsMouseLeaveHandler}
-      >
-        <meshBasicMaterial map={bakedTexture} />
-      </mesh>
+        <mesh
+          geometry={worksSM.nodes.wallObjectsRe.geometry}
+          position={[0, 0, 0]}
+          rotation={[0, Math.PI * 0.5, 0]}
+          onPointerEnter={wallObjectsMouseEnterHandler}
+          onPointerLeave={wallObjectsMouseLeaveHandler}
+        >
+          <meshBasicMaterial map={bakedTexture} />
+        </mesh>
 
-      {isTitle.wallObjects && (
-        <group position={[32, 20, 10]}>
-          <Text
-            position={[0, 0, 0]}
-            fontSize={1.5}
-            font="./fonts/cormorant-garamond-v16-latin-300.woff"
-            color="snow"
-            anchorX="center"
-            anchorY="middle"
-          >
-            Wall Objects
-          </Text>
-          <Text
-            position={[0, -1.5, 0]}
-            fontSize={0.8}
-            font="./fonts/cormorant-garamond-v16-latin-300.woff"
-            color="snow"
-            anchorX="center"
-            anchorY="middle"
-          >
-            designed by Satomi Minoshima
-          </Text>
-        </group>
-      )}
+        {isTitle.wallObjects && (
+          <group position={[32, 20, 10]}>
+            <Text
+              position={[0, 0, 0]}
+              fontSize={1.5}
+              font="./fonts/cormorant-garamond-v16-latin-300.woff"
+              color="snow"
+              anchorX="center"
+              anchorY="middle"
+            >
+              Wall Objects
+            </Text>
+            <Text
+              position={[0, -1.5, 0]}
+              fontSize={0.8}
+              font="./fonts/cormorant-garamond-v16-latin-300.woff"
+              color="snow"
+              anchorX="center"
+              anchorY="middle"
+            >
+              designed by Satomi Minoshima
+            </Text>
+          </group>
+        )}
+      </Suspense>
     </>
   );
 }
+

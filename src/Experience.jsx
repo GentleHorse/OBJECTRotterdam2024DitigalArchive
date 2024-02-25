@@ -7,7 +7,7 @@ import { Perf } from "r3f-perf";
 export default function Experience() {
   return (
     <>
-      {/* <OrbitControls makeDefault /> */}
+      <OrbitControls makeDefault />
 
       {/* <axesHelper args={[30]} /> */}
 
