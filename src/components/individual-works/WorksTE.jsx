@@ -10,50 +10,25 @@ export default function WorksTE({ bakedTexture }) {
   const cameraFocusArrayObject = {
     zoomInCameraPosition: [14.7, 4.0, -45.7],
     zoomInCameraTarget: [15.68, -1.88, -13.09],
-    zoomOutCameraPosition: [42, 15, -68],
-    zoomOutCameraTarget: [0, 0, 0],
-  }
+  };
 
   // Logic of toggling works title
   const [isTitle, setIsTitle] = useState(false);
-
-  // Focus object state
-  const [isFocused, setIsFocused] = useState(false);
 
   // Load the mesh
   const worksTE = useGLTF("./models/works-banners/worksTE.glb");
 
   // Mouse click event handler
   const clickHandler = () => {
-    setIsFocused((prevIsFocused) => {
-      console.log(isFocused);
-
-      if (isFocused === false) {
-        cameraControlsRef.current.setLookAt(
-          cameraFocusArrayObject.zoomInCameraPosition[0],
-          cameraFocusArrayObject.zoomInCameraPosition[1],
-          cameraFocusArrayObject.zoomInCameraPosition[2],
-          cameraFocusArrayObject.zoomInCameraTarget[0],
-          cameraFocusArrayObject.zoomInCameraTarget[1],
-          cameraFocusArrayObject.zoomInCameraTarget[2],
-          true
-        );
-      }
-
-      if (isFocused === true) {
-        cameraControlsRef.current.setLookAt(
-          cameraFocusArrayObject.zoomOutCameraPosition[0],
-          cameraFocusArrayObject.zoomOutCameraPosition[1],
-          cameraFocusArrayObject.zoomOutCameraPosition[2],
-          cameraFocusArrayObject.zoomOutCameraTarget[0],
-          cameraFocusArrayObject.zoomOutCameraTarget[1],
-          cameraFocusArrayObject.zoomOutCameraTarget[2],
-          true
-        );
-      }
-
-      return !prevIsFocused;
-    });
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.zoomInCameraPosition[0],
+      cameraFocusArrayObject.zoomInCameraPosition[1],
+      cameraFocusArrayObject.zoomInCameraPosition[2],
+      cameraFocusArrayObject.zoomInCameraTarget[0],
+      cameraFocusArrayObject.zoomInCameraTarget[1],
+      cameraFocusArrayObject.zoomInCameraTarget[2],
+      true
+    );
   };
 
   // Mouse pointer enter event handler
