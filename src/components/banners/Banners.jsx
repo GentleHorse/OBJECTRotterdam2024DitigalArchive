@@ -1,10 +1,14 @@
-import { useState, useEffect, useRef } from "react";
-import { useGLTF, CameraControls } from "@react-three/drei";
+import { useState, useEffect } from "react";
+import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
-export default function Banners({ bakedTexture }) {
-  const cameraControlsRef = useRef();
-
+export default function Banners({
+  bakedTexture,
+  onClickExhibitionBanner,
+  onClickJBBanner,
+  onClickSMBanner,
+  onClickTEBanner,
+}) {
   // Change mouse pointer
   const [hovered, setHovered] = useState(false);
 
@@ -50,10 +54,11 @@ export default function Banners({ bakedTexture }) {
 
   return (
     <>
-      {/* <CameraControls ref={cameraControlsRef} makeDefault /> */}
-
       <group position={[0, 0, 0]} rotation={[0, Math.PI * 0.5, 0]}>
-        <mesh geometry={exhibitionBanner.nodes.exhibitionBannerRe.geometry}>
+        <mesh
+          geometry={exhibitionBanner.nodes.exhibitionBannerRe.geometry}
+          onClick={onClickExhibitionBanner}
+        >
           <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
@@ -66,7 +71,10 @@ export default function Banners({ bakedTexture }) {
           <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
         </mesh>
 
-        <mesh geometry={designersBanner.nodes.jbBannerRe.geometry}>
+        <mesh
+          geometry={designersBanner.nodes.jbBannerRe.geometry}
+          onClick={onClickJBBanner}
+        >
           <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
         </mesh>
 
@@ -79,7 +87,10 @@ export default function Banners({ bakedTexture }) {
           <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
         </mesh>
 
-        <mesh geometry={designersBanner.nodes.smBannerRe.geometry}>
+        <mesh
+          geometry={designersBanner.nodes.smBannerRe.geometry}
+          onClick={onClickSMBanner}
+        >
           <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
         </mesh>
 
@@ -92,7 +103,10 @@ export default function Banners({ bakedTexture }) {
           <meshBasicMaterial color="gray" side={THREE.DoubleSide} />
         </mesh>
 
-        <mesh geometry={designersBanner.nodes.teBannerRe.geometry}>
+        <mesh
+          geometry={designersBanner.nodes.teBannerRe.geometry}
+          onClick={onClickTEBanner}
+        >
           <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
         </mesh>
 

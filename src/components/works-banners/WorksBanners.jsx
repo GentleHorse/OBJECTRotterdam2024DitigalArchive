@@ -23,15 +23,23 @@ export default function WorksBanners() {
     untitledZoomInCameraPosition: [10.14, 9.5, 20.0],
     untitledZoomInCameraTarget: [-330.22, -5.5, 44.22],
     inflatableLeatherZoomInCameraPosition: [1.31, 6.31, -28.55],
-    inflatableLeatherZoomInCameraTarget: [6.51, 0.0, 0.00],
+    inflatableLeatherZoomInCameraTarget: [6.51, 0.0, 0.0],
     edgeStoolsZoomInCameraPosition: [6.68, 1.31, 36.53],
     edgeStoolsZoomInCameraTarget: [29.12, -4.48, -31.15],
-    wallObjectsZoomInCameraPosition: [20.00, 9.00, 17.00],
-    wallObjectsZoomInCameraTarget: [24.29, 9.00, 12.00],
+    wallObjectsZoomInCameraPosition: [14.00, 9.0, 23.64],
+    wallObjectsZoomInCameraTarget: [142.72, 9.0, -118.84],
+    exhibitionBannerZoomInCameraPosition: [65.0, 8.0, -32.62],
+    exhibitionBannerZoomInCameraTarget: [65.0, 8.0, 0.0],
+    JBBannerZoomInCameraPosition: [-75.0, 8.0, -51.31],
+    JBBannerZoomInCameraTarget: [-83.0, 8.0, 0.0],
+    SMBannerZoomInCameraPosition: [-60.0, 8.0, -30.0],
+    SMBannerZoomInCameraTarget: [-65.23, 8.0, 0.0],
+    TEBannerZoomInCameraPosition: [-50.0, 8.0, -12.5],
+    TEBannerZoomInCameraTarget: [-53.0, 8.0, 0.0],
   };
 
   // Zoom in camera logic click handlers
-  // JB
+  // JB works
   const metamorphosisClickHandler = () => {
     cameraControlsRef.current.setLookAt(
       cameraFocusArrayObject.MetamorphosisZoomInCameraPosition[0],
@@ -77,7 +85,7 @@ export default function WorksBanners() {
     );
   };
 
-  // SM
+  // SM works
   const inflatableLeatherClickHandler = () => {
     cameraControlsRef.current.setLookAt(
       cameraFocusArrayObject.inflatableLeatherZoomInCameraPosition[0],
@@ -112,7 +120,7 @@ export default function WorksBanners() {
     );
   };
 
-  // TE
+  // TE work
   const ambienceOfLightClickHandler = () => {
     cameraControlsRef.current.setLookAt(
       cameraFocusArrayObject.ambienceOfLightZoomInCameraPosition[0],
@@ -121,6 +129,58 @@ export default function WorksBanners() {
       cameraFocusArrayObject.ambienceOfLightZoomInCameraTarget[0],
       cameraFocusArrayObject.ambienceOfLightZoomInCameraTarget[1],
       cameraFocusArrayObject.ambienceOfLightZoomInCameraTarget[2],
+      true
+    );
+  };
+
+  // Exhibition banner
+  const exhibitionBannerClickHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.exhibitionBannerZoomInCameraPosition[0],
+      cameraFocusArrayObject.exhibitionBannerZoomInCameraPosition[1],
+      cameraFocusArrayObject.exhibitionBannerZoomInCameraPosition[2],
+      cameraFocusArrayObject.exhibitionBannerZoomInCameraTarget[0],
+      cameraFocusArrayObject.exhibitionBannerZoomInCameraTarget[1],
+      cameraFocusArrayObject.exhibitionBannerZoomInCameraTarget[2],
+      true
+    );
+  };
+
+  // JB Banner
+  const JBBannerClickHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.JBBannerZoomInCameraPosition[0],
+      cameraFocusArrayObject.JBBannerZoomInCameraPosition[1],
+      cameraFocusArrayObject.JBBannerZoomInCameraPosition[2],
+      cameraFocusArrayObject.JBBannerZoomInCameraTarget[0],
+      cameraFocusArrayObject.JBBannerZoomInCameraTarget[1],
+      cameraFocusArrayObject.JBBannerZoomInCameraTarget[2],
+      true
+    );
+  };
+
+  // SM Banner
+  const SMBannerClickHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.SMBannerZoomInCameraPosition[0],
+      cameraFocusArrayObject.SMBannerZoomInCameraPosition[1],
+      cameraFocusArrayObject.SMBannerZoomInCameraPosition[2],
+      cameraFocusArrayObject.SMBannerZoomInCameraTarget[0],
+      cameraFocusArrayObject.SMBannerZoomInCameraTarget[1],
+      cameraFocusArrayObject.SMBannerZoomInCameraTarget[2],
+      true
+    );
+  };
+
+  // SM Banner
+  const TEBannerClickHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.TEBannerZoomInCameraPosition[0],
+      cameraFocusArrayObject.TEBannerZoomInCameraPosition[1],
+      cameraFocusArrayObject.TEBannerZoomInCameraPosition[2],
+      cameraFocusArrayObject.TEBannerZoomInCameraTarget[0],
+      cameraFocusArrayObject.TEBannerZoomInCameraTarget[1],
+      cameraFocusArrayObject.TEBannerZoomInCameraTarget[2],
       true
     );
   };
@@ -157,7 +217,13 @@ export default function WorksBanners() {
         onClickAmbienceOfLight={ambienceOfLightClickHandler}
       />
 
-      <Banners bakedTexture={bakedTexture} />
+      <Banners
+        bakedTexture={bakedTexture}
+        onClickExhibitionBanner={exhibitionBannerClickHandler}
+        onClickJBBanner={JBBannerClickHandler}
+        onClickSMBanner={SMBannerClickHandler}
+        onClickTEBanner={TEBannerClickHandler}
+      />
     </>
   );
 }
