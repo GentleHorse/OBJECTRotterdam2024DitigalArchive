@@ -1,11 +1,15 @@
-import { useState, Suspense, useRef } from "react";
-import { useGLTF, Text, CameraControls } from "@react-three/drei";
+import { useState, Suspense } from "react";
+import { useGLTF, Text } from "@react-three/drei";
 import * as THREE from "three";
 import Placeholder from "../../components/utils/PlaceHolder.jsx";
 
-export default function WorksJB({ bakedTexture }) {
-  const cameraControlsRef = useRef();
-
+export default function WorksJB({
+  bakedTexture,
+  onClickMetamorphosis,
+  onClickFoolishPleasure,
+  onClickCream,
+  onClickUntitled,
+}) {
   // Logic of toggling titles of works
   const [isTitle, setIsTitle] = useState({
     metamorphosis: false,
@@ -35,7 +39,7 @@ export default function WorksJB({ bakedTexture }) {
   const worksJB = useGLTF("./models/works-banners/worksJB.glb");
 
   // Mouse pointer enter event handlers
-  const theFallMouseEnterHandler = () => {
+  const metamorphosisMouseEnterHandler = () => {
     titleToggleHandler("metamorphosis");
   };
   const foolishPleasureMouseEnterHandler = () => {
@@ -46,7 +50,7 @@ export default function WorksJB({ bakedTexture }) {
   };
 
   // Mouse pointer leave event handlers
-  const theFallMouseLeaveHandler = () => {
+  const metamorphosisMouseLeaveHandler = () => {
     titleToggleHandler("metamorphosis");
   };
   const foolishPleasureMouseLeaveHandler = () => {
@@ -58,8 +62,6 @@ export default function WorksJB({ bakedTexture }) {
 
   return (
     <>
-      {/* <CameraControls ref={cameraControlsRef} makeDefault /> */}
-
       <Suspense
         fallback={
           <group position={[-12.5, 12.5, 0]}>
@@ -73,8 +75,9 @@ export default function WorksJB({ bakedTexture }) {
           geometry={worksJB.nodes.metamorphosis.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
-          onPointerEnter={theFallMouseEnterHandler}
-          onPointerLeave={theFallMouseLeaveHandler}
+          onClick={onClickMetamorphosis}
+          onPointerEnter={metamorphosisMouseEnterHandler}
+          onPointerLeave={metamorphosisMouseLeaveHandler}
         >
           <meshBasicMaterial map={bakedTexture} />
         </mesh>
@@ -108,6 +111,7 @@ export default function WorksJB({ bakedTexture }) {
           geometry={worksJB.nodes.foolishPleasureRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
+          onClick={onClickFoolishPleasure}
           onPointerEnter={foolishPleasureMouseEnterHandler}
           onPointerLeave={foolishPleasureMouseLeaveHandler}
         >
@@ -143,6 +147,7 @@ export default function WorksJB({ bakedTexture }) {
           geometry={worksJB.nodes.creamRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
+          onClick={onClickCream}
           onPointerEnter={creamMouseEnterHandler}
           onPointerLeave={creamMouseLeaveHandler}
         >
@@ -150,7 +155,7 @@ export default function WorksJB({ bakedTexture }) {
         </mesh>
 
         {isTitle.cream && (
-          <group position={[-8, 6.5, 22]} rotation={[0, -Math.PI * 0.5, 0]}>
+          <group position={[-8, 8.5, 22]} rotation={[0, -Math.PI * 0.5, 0]}>
             <Text
               position={[0, 0, 0]}
               fontSize={1.5}
@@ -178,6 +183,7 @@ export default function WorksJB({ bakedTexture }) {
           geometry={worksJB.nodes.untitledRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
+          onClick={onClickUntitled}
         >
           <meshBasicMaterial map={bakedTexture} />
         </mesh>

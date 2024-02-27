@@ -6,12 +6,12 @@ export default function CustomCamera() {
   const { camera } = useThree();
   const { Position_X, Position_Y, Position_Z, Target_X, Target_Y, Target_Z } =
     useControls("camera", {
-      Position_X: { value: -10, min: -150, max: 150, step: 0.01 },
-      Position_Y: { value: 25, min: -150, max: 150, step: 0.01 },
-      Position_Z: { value: -70, min: -150, max: 150, step: 0.01 },
-      Target_X: { value: 0, min: -150, max: 150, step: 0.01 },
-      Target_Y: { value: 0, min: -150, max: 150, step: 0.01 },
-      Target_Z: { value: 0, min: -150, max: 150, step: 0.01 },
+      Position_X: { value: -10, min: -500, max: 500, step: 0.01 },
+      Position_Y: { value: 25, min: -500, max: 500, step: 0.01 },
+      Position_Z: { value: -70, min: -500, max: 500, step: 0.01 },
+      Target_X: { value: 0, min: -500, max: 500, step: 0.01 },
+      Target_Y: { value: 0, min: -500, max: 500, step: 0.01 },
+      Target_Z: { value: 0, min: -500, max: 500, step: 0.01 },
     });
 
   useEffect(() => {

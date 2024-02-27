@@ -1,10 +1,13 @@
-import { useState, Suspense, useRef } from "react";
-import { useGLTF, Text, CameraControls } from "@react-three/drei";
+import { useState, Suspense } from "react";
+import { useGLTF, Text } from "@react-three/drei";
 import Placeholder from "../../components/utils/PlaceHolder.jsx";
 
-export default function WorksSM({ bakedTexture }) {
-  const cameraControlsRef = useRef();
-
+export default function WorksSM({
+  bakedTexture,
+  onClickInflatableLeather,
+  onClickEdgeStools,
+  onClickWallObjects,
+}) {
   // Logic of toggling titles of works
   const [isTitle, setIsTitle] = useState({
     inflatableLeather: false,
@@ -57,8 +60,6 @@ export default function WorksSM({ bakedTexture }) {
 
   return (
     <>
-      {/* <CameraControls ref={cameraControlsRef} makeDefault /> */}
-
       <Suspense
         fallback={
           <group position={[15, 5, 8]}>
@@ -82,6 +83,7 @@ export default function WorksSM({ bakedTexture }) {
           geometry={worksSM.nodes.inflatableLeatherRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
+          onClick={onClickInflatableLeather}
           onPointerEnter={inflatableLeatherMouseEnterHandler}
           onPointerLeave={inflatableLeatherMouseLeaveHandler}
         >
@@ -89,7 +91,7 @@ export default function WorksSM({ bakedTexture }) {
         </mesh>
 
         {isTitle.inflatableLeather && (
-          <group position={[15, 12, 8]}>
+          <group position={[10, 12, 4]} rotation={[0, -Math.PI, 0]}>
             <Text
               position={[0, 0, 0]}
               fontSize={1.5}
@@ -117,6 +119,7 @@ export default function WorksSM({ bakedTexture }) {
           geometry={worksSM.nodes.edgeStoolsRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
+          onClick={onClickEdgeStools}
           onPointerEnter={edgeStoolsMouseEnterHandler}
           onPointerLeave={edgeStoolsMouseLeaveHandler}
         >
@@ -124,7 +127,7 @@ export default function WorksSM({ bakedTexture }) {
         </mesh>
 
         {isTitle.edgeStools && (
-          <group position={[15, 9, 8]}>
+          <group position={[15, 8, 8]}>
             <Text
               position={[0, 0, 0]}
               fontSize={1.5}
@@ -152,6 +155,7 @@ export default function WorksSM({ bakedTexture }) {
           geometry={worksSM.nodes.wallObjectsRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
+          onClick={onClickWallObjects}
           onPointerEnter={wallObjectsMouseEnterHandler}
           onPointerLeave={wallObjectsMouseLeaveHandler}
         >
@@ -159,7 +163,7 @@ export default function WorksSM({ bakedTexture }) {
         </mesh>
 
         {isTitle.wallObjects && (
-          <group position={[32, 20, 10]}>
+          <group position={[27, 11, -10]} rotation={[0, -Math.PI * 0.25, 0]}>
             <Text
               position={[0, 0, 0]}
               fontSize={1.5}
