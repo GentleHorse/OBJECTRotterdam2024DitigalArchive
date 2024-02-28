@@ -4,6 +4,7 @@ import WorksJB from "../individual-works/WorksJB.jsx";
 import WorksSM from "../individual-works/WorksSM.jsx";
 import WorksTE from "../individual-works/WorksTE.jsx";
 import Banners from "../banners/Banners.jsx";
+import Stickers from "../stickers/Stickers.jsx";
 
 import CustomCamera from "../utils/CustomCamera.jsx";
 
@@ -115,9 +116,17 @@ export default function WorksBanners() {
     // TE work
     ambienceOfLightZoomOutCameraPosition: [33.61, 6.31, -63.77],
     ambienceOfLightZoomOutCameraTarget: [0.0, 0.0, 0.0],
+
+    // Go back to the initial position & target
+    worksInitialCameraPosition: [-10, 25, -70],
+    worksInitialCameraTarget: [0.0, 0.0, 0.0],
+
+    // Go to the designer banners overview position & target
+    designerbannersCameraPosition: [-50.43, 10.00, -62.62],
+    designerbannersCameraTarget: [-64.46, 10.00, 1.31],
   };
 
-  // Zoom in camera logic click handlers
+  // Zoom in & out camera logic click handlers
   // JB works
   const metamorphosisClickHandler = () => {
     cameraControlsRef.current.setLookAt(
@@ -397,6 +406,32 @@ export default function WorksBanners() {
     );
   };
 
+  // Go back to the initial position & target
+  const worksClickHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.worksInitialCameraPosition[0],
+      cameraFocusArrayObject.worksInitialCameraPosition[1],
+      cameraFocusArrayObject.worksInitialCameraPosition[2],
+      cameraFocusArrayObject.worksInitialCameraTarget[0],
+      cameraFocusArrayObject.worksInitialCameraTarget[1],
+      cameraFocusArrayObject.worksInitialCameraTarget[2],
+      true
+    );
+  };
+
+  // Go to the designer banners overview position & target
+  const designerBannersClickHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.designerbannersCameraPosition[0],
+      cameraFocusArrayObject.designerbannersCameraPosition[1],
+      cameraFocusArrayObject.designerbannersCameraPosition[2],
+      cameraFocusArrayObject.designerbannersCameraTarget[0],
+      cameraFocusArrayObject.designerbannersCameraTarget[1],
+      cameraFocusArrayObject.designerbannersCameraTarget[2],
+      true
+    );
+  };
+
   // Load one big uv texture for design works & banners
   const bakedTexture = useTexture(
     "./models/works-banners/baked-works-banners.jpg"
@@ -453,75 +488,11 @@ export default function WorksBanners() {
         onClickTEBanner={TEBannerClickHandler}
       />
 
-      <group position={[34.5, 17, -5]} rotation={[0, Math.PI, 0]}>
-        <Text
-          position={[3.8, 0, 0]}
-          fontSize={0.9}
-          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
-          color="#080808"
-          anchorX="right"
-          anchorY="middle"
-        >
-          Designers {">>"}
-        </Text>
-
-        <Text
-          position={[3.8, -2, 0]}
-          fontSize={0.9}
-          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
-          color="#080808"
-          anchorX="right"
-          anchorY="middle"
-        >
-          Works {">"}
-        </Text>
-
-        <Text
-          position={[-3.8, -4, 0]}
-          fontSize={0.9}
-          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
-          color="#080808"
-          anchorX="left"
-          anchorY="middle"
-        >
-          {"<"} Expo Info
-        </Text>
-      </group>
-
-      <group position={[-34.5, 17, -5]} rotation={[0, Math.PI, 0]}>
-        <Text
-          position={[3.9, 0, 0]}
-          fontSize={0.9}
-          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
-          color="#080808"
-          anchorX="right"
-          anchorY="middle"
-        >
-          Designers {">"}
-        </Text>
-
-        <Text
-          position={[-3.5, -2, 0]}
-          fontSize={0.9}
-          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
-          color="#080808"
-          anchorX="left"
-          anchorY="middle"
-        >
-          {"<"} Works
-        </Text>
-
-        <Text
-          position={[-3.5, -4, 0]}
-          fontSize={0.9}
-          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
-          color="#080808"
-          anchorX="left"
-          anchorY="middle"
-        >
-          {"<<"} Expo Info
-        </Text>
-      </group>
+      <Stickers
+        onClickExhibitionBanner={exhibitionBannerClickHandler}
+        onClickWorks={worksClickHandler}
+        onClickDesignerBanners={designerBannersClickHandler}
+      />
     </>
   );
 }
