@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useTexture, CameraControls } from "@react-three/drei";
 import WorksJB from "../individual-works/WorksJB.jsx";
 import WorksSM from "../individual-works/WorksSM.jsx";
@@ -11,23 +11,79 @@ export default function WorksBanners() {
   // Zoom in camera logic set up
   const cameraControlsRef = useRef();
 
+  // Zoom in & out toggling state logic
+  const [isFocused, setIsFocused] = useState({
+    ambienceOfLight: false,
+    metamorphosis: false,
+    foolishPleasure: false,
+    cream: false,
+    untitled: false,
+    inflatableLeather: false,
+    edgeStools: false,
+    wallObjects: false,
+    exhibitionBanner: false,
+    JBBanner: false,
+    SMBanner: false,
+    TEBanner: false,
+  });
+
+  const focusOnHandler = (selector) => {
+    setIsFocused((prevIsFocused) => {
+      const newIsFocused = { ...prevIsFocused };
+
+      for (const focus in newIsFocused) {
+        if (focus === selector) {
+          if (newIsFocused[selector] === false) {
+            newIsFocused[selector] = true;
+          }
+        }
+      }
+
+      return newIsFocused;
+    });
+  };
+
+  const focusOffHandler = (selector) => {
+    setIsFocused((prevIsFocused) => {
+      const newIsFocused = { ...prevIsFocused };
+
+      for (const focus in newIsFocused) {
+        if (focus === selector) {
+          if (newIsFocused[selector] === true) {
+            newIsFocused[selector] = false;
+          }
+        }
+      }
+
+      return newIsFocused;
+    });
+  };
+
   const cameraFocusArrayObject = {
-    ambienceOfLightZoomInCameraPosition: [14.7, 4.0, -45.7],
-    ambienceOfLightZoomInCameraTarget: [15.68, -1.88, -13.09],
-    MetamorphosisZoomInCameraPosition: [-10.04, 7.22, -62.34],
-    MetamorphosisZoomInCameraTarget: [-11.21, 9.17, 0.0],
+    // Zoom-in Position
+    // JB works
+    metamorphosisZoomInCameraPosition: [-10.04, 7.22, -62.34],
+    metamorphosisZoomInCameraTarget: [-11.21, 9.17, 0.0],
     foolishPleasureZoomInCameraPosition: [20.56, 8.7, 0.0],
     foolishPleasureZoomInCameraTarget: [-89.18, 5.35, 2.13],
     creamZoomInCameraPosition: [-26.53, 8.5, 23.0],
     creamZoomInCameraTarget: [300.0, 0.0, 18.0],
-    untitledZoomInCameraPosition: [10.14, 9.5, 20.0],
-    untitledZoomInCameraTarget: [-330.22, -5.5, 44.22],
+    untitledZoomInCameraPosition: [8.7, 8.0, 12.0],
+    untitledZoomInCameraTarget: [-5.5, 8.0, 18.5],
+
+    // SM works
     inflatableLeatherZoomInCameraPosition: [1.31, 6.31, -28.55],
     inflatableLeatherZoomInCameraTarget: [6.51, 0.0, 0.0],
     edgeStoolsZoomInCameraPosition: [6.68, 1.31, 36.53],
     edgeStoolsZoomInCameraTarget: [29.12, -4.48, -31.15],
-    wallObjectsZoomInCameraPosition: [14.00, 9.0, 23.64],
+    wallObjectsZoomInCameraPosition: [14.0, 9.0, 23.64],
     wallObjectsZoomInCameraTarget: [142.72, 9.0, -118.84],
+
+    // TE work
+    ambienceOfLightZoomInCameraPosition: [14.7, 4.0, -45.7],
+    ambienceOfLightZoomInCameraTarget: [15.68, -1.88, -13.09],
+
+    // Banners
     exhibitionBannerZoomInCameraPosition: [65.0, 8.0, -32.62],
     exhibitionBannerZoomInCameraTarget: [65.0, 8.0, 0.0],
     JBBannerZoomInCameraPosition: [-75.0, 8.0, -51.31],
@@ -36,21 +92,60 @@ export default function WorksBanners() {
     SMBannerZoomInCameraTarget: [-65.23, 8.0, 0.0],
     TEBannerZoomInCameraPosition: [-50.0, 8.0, -12.5],
     TEBannerZoomInCameraTarget: [-53.0, 8.0, 0.0],
+
+    // Zoom-out Position
+    // JB works
+    metamorphosisZoomOutCameraPosition: [14.92, 18.54, -76.23],
+    metamorphosisZoomOutCameraTarget: [0.0, 0.0, 0.0],
+    foolishPleasureZoomOutCameraPosition: [-43.33, 18.98, 48.38],
+    foolishPleasureZoomOutCameraTarget: [0.0, 0.0, 0.0],
+    creamZoomOutCameraPosition: [30.3, 3.0, -11.58],
+    creamZoomOutCameraTarget: [0.0, 0.0, 0.0],
+    untitledZoomOutCameraPosition: [6.68, 8.0, 73.91],
+    untitledZoomOutCameraTarget: [0.0, 0.0, 0.0],
+
+    // SM works
+    inflatableLeatherZoomOutCameraPosition: [-14.94, 7.38, 57.66],
+    inflatableLeatherZoomOutCameraTarget: [0.0, 0.0, 0.0],
+    edgeStoolsZoomOutCameraPosition: [28.68, 13.61, 61.02],
+    edgeStoolsZoomOutCameraTarget: [0.0, 0.0, 0.0],
+    wallObjectsZoomOutCameraPosition: [0.00, 12.47, 58.69],
+    wallObjectsZoomOutCameraTarget: [0.0, 0.0, 0.0],
+
+    // TE work
+    ambienceOfLightZoomOutCameraPosition: [33.61, 6.31, -63.77],
+    ambienceOfLightZoomOutCameraTarget: [0.0, 0.0, 0.0],
   };
 
   // Zoom in camera logic click handlers
   // JB works
   const metamorphosisClickHandler = () => {
     cameraControlsRef.current.setLookAt(
-      cameraFocusArrayObject.MetamorphosisZoomInCameraPosition[0],
-      cameraFocusArrayObject.MetamorphosisZoomInCameraPosition[1],
-      cameraFocusArrayObject.MetamorphosisZoomInCameraPosition[2],
-      cameraFocusArrayObject.MetamorphosisZoomInCameraTarget[0],
-      cameraFocusArrayObject.MetamorphosisZoomInCameraTarget[1],
-      cameraFocusArrayObject.MetamorphosisZoomInCameraTarget[2],
+      cameraFocusArrayObject.metamorphosisZoomInCameraPosition[0],
+      cameraFocusArrayObject.metamorphosisZoomInCameraPosition[1],
+      cameraFocusArrayObject.metamorphosisZoomInCameraPosition[2],
+      cameraFocusArrayObject.metamorphosisZoomInCameraTarget[0],
+      cameraFocusArrayObject.metamorphosisZoomInCameraTarget[1],
+      cameraFocusArrayObject.metamorphosisZoomInCameraTarget[2],
       true
     );
+
+    focusOnHandler("metamorphosis");
   };
+  const metamorphosisClickBackHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.metamorphosisZoomOutCameraPosition[0],
+      cameraFocusArrayObject.metamorphosisZoomOutCameraPosition[1],
+      cameraFocusArrayObject.metamorphosisZoomOutCameraPosition[2],
+      cameraFocusArrayObject.metamorphosisZoomOutCameraTarget[0],
+      cameraFocusArrayObject.metamorphosisZoomOutCameraTarget[1],
+      cameraFocusArrayObject.metamorphosisZoomOutCameraTarget[2],
+      true
+    );
+
+    focusOffHandler("metamorphosis");
+  };
+
   const foolishPleasureClickHandler = () => {
     cameraControlsRef.current.setLookAt(
       cameraFocusArrayObject.foolishPleasureZoomInCameraPosition[0],
@@ -61,7 +156,23 @@ export default function WorksBanners() {
       cameraFocusArrayObject.foolishPleasureZoomInCameraTarget[2],
       true
     );
+
+    focusOnHandler("foolishPleasure");
   };
+  const foolishPleasureClickBackHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.foolishPleasureZoomOutCameraPosition[0],
+      cameraFocusArrayObject.foolishPleasureZoomOutCameraPosition[1],
+      cameraFocusArrayObject.foolishPleasureZoomOutCameraPosition[2],
+      cameraFocusArrayObject.foolishPleasureZoomOutCameraTarget[0],
+      cameraFocusArrayObject.foolishPleasureZoomOutCameraTarget[1],
+      cameraFocusArrayObject.foolishPleasureZoomOutCameraTarget[2],
+      true
+    );
+
+    focusOffHandler("foolishPleasure");
+  };
+
   const creamClickHandler = () => {
     cameraControlsRef.current.setLookAt(
       cameraFocusArrayObject.creamZoomInCameraPosition[0],
@@ -72,7 +183,23 @@ export default function WorksBanners() {
       cameraFocusArrayObject.creamZoomInCameraTarget[2],
       true
     );
+
+    focusOnHandler("cream");
   };
+  const creamClickBackHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.creamZoomOutCameraPosition[0],
+      cameraFocusArrayObject.creamZoomOutCameraPosition[1],
+      cameraFocusArrayObject.creamZoomOutCameraPosition[2],
+      cameraFocusArrayObject.creamZoomOutCameraTarget[0],
+      cameraFocusArrayObject.creamZoomOutCameraTarget[1],
+      cameraFocusArrayObject.creamZoomOutCameraTarget[2],
+      true
+    );
+
+    focusOffHandler("cream");
+  };
+
   const untitledClickHandler = () => {
     cameraControlsRef.current.setLookAt(
       cameraFocusArrayObject.untitledZoomInCameraPosition[0],
@@ -83,6 +210,21 @@ export default function WorksBanners() {
       cameraFocusArrayObject.untitledZoomInCameraTarget[2],
       true
     );
+
+    focusOnHandler("untitled");
+  };
+  const untitledClickBackHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.untitledZoomOutCameraPosition[0],
+      cameraFocusArrayObject.untitledZoomOutCameraPosition[1],
+      cameraFocusArrayObject.untitledZoomOutCameraPosition[2],
+      cameraFocusArrayObject.untitledZoomOutCameraTarget[0],
+      cameraFocusArrayObject.untitledZoomOutCameraTarget[1],
+      cameraFocusArrayObject.untitledZoomOutCameraTarget[2],
+      true
+    );
+
+    focusOffHandler("untitled");
   };
 
   // SM works
@@ -96,7 +238,23 @@ export default function WorksBanners() {
       cameraFocusArrayObject.inflatableLeatherZoomInCameraTarget[2],
       true
     );
+
+    focusOnHandler("inflatableLeather");
   };
+  const inflatableLeatherClickBackHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.inflatableLeatherZoomOutCameraPosition[0],
+      cameraFocusArrayObject.inflatableLeatherZoomOutCameraPosition[1],
+      cameraFocusArrayObject.inflatableLeatherZoomOutCameraPosition[2],
+      cameraFocusArrayObject.inflatableLeatherZoomOutCameraTarget[0],
+      cameraFocusArrayObject.inflatableLeatherZoomOutCameraTarget[1],
+      cameraFocusArrayObject.inflatableLeatherZoomOutCameraTarget[2],
+      true
+    );
+
+    focusOffHandler("inflatableLeather");
+  };
+
   const edgeStoolsClickHandler = () => {
     cameraControlsRef.current.setLookAt(
       cameraFocusArrayObject.edgeStoolsZoomInCameraPosition[0],
@@ -107,7 +265,23 @@ export default function WorksBanners() {
       cameraFocusArrayObject.edgeStoolsZoomInCameraTarget[2],
       true
     );
+
+    focusOnHandler("edgeStools");
   };
+  const edgeStoolsClickBackHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.edgeStoolsZoomOutCameraPosition[0],
+      cameraFocusArrayObject.edgeStoolsZoomOutCameraPosition[1],
+      cameraFocusArrayObject.edgeStoolsZoomOutCameraPosition[2],
+      cameraFocusArrayObject.edgeStoolsZoomOutCameraTarget[0],
+      cameraFocusArrayObject.edgeStoolsZoomOutCameraTarget[1],
+      cameraFocusArrayObject.edgeStoolsZoomOutCameraTarget[2],
+      true
+    );
+
+    focusOffHandler("edgeStools");
+  };
+
   const wallObjectsClickHandler = () => {
     cameraControlsRef.current.setLookAt(
       cameraFocusArrayObject.wallObjectsZoomInCameraPosition[0],
@@ -118,6 +292,21 @@ export default function WorksBanners() {
       cameraFocusArrayObject.wallObjectsZoomInCameraTarget[2],
       true
     );
+
+    focusOnHandler("wallObjects");
+  };
+  const wallObjectsClickBackHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.wallObjectsZoomOutCameraPosition[0],
+      cameraFocusArrayObject.wallObjectsZoomOutCameraPosition[1],
+      cameraFocusArrayObject.wallObjectsZoomOutCameraPosition[2],
+      cameraFocusArrayObject.wallObjectsZoomOutCameraTarget[0],
+      cameraFocusArrayObject.wallObjectsZoomOutCameraTarget[1],
+      cameraFocusArrayObject.wallObjectsZoomOutCameraTarget[2],
+      true
+    );
+
+    focusOffHandler("wallObjects");
   };
 
   // TE work
@@ -131,6 +320,21 @@ export default function WorksBanners() {
       cameraFocusArrayObject.ambienceOfLightZoomInCameraTarget[2],
       true
     );
+
+    focusOnHandler("ambienceOfLight");
+  };
+  const ambienceOfLightClickBackHandler = () => {
+    cameraControlsRef.current.setLookAt(
+      cameraFocusArrayObject.ambienceOfLightZoomOutCameraPosition[0],
+      cameraFocusArrayObject.ambienceOfLightZoomOutCameraPosition[1],
+      cameraFocusArrayObject.ambienceOfLightZoomOutCameraPosition[2],
+      cameraFocusArrayObject.ambienceOfLightZoomOutCameraTarget[0],
+      cameraFocusArrayObject.ambienceOfLightZoomOutCameraTarget[1],
+      cameraFocusArrayObject.ambienceOfLightZoomOutCameraTarget[2],
+      true
+    );
+
+    focusOffHandler("ambienceOfLight");
   };
 
   // Exhibition banner
@@ -172,7 +376,7 @@ export default function WorksBanners() {
     );
   };
 
-  // SM Banner
+  // TE Banner
   const TEBannerClickHandler = () => {
     cameraControlsRef.current.setLookAt(
       cameraFocusArrayObject.TEBannerZoomInCameraPosition[0],
@@ -200,21 +404,37 @@ export default function WorksBanners() {
       <WorksJB
         bakedTexture={bakedTexture}
         onClickMetamorphosis={metamorphosisClickHandler}
+        onClickBackMetamorphosis={metamorphosisClickBackHandler}
+        isFocusedMetamorphosis={isFocused.metamorphosis}
         onClickFoolishPleasure={foolishPleasureClickHandler}
+        onClickBackFoolishPleasure={foolishPleasureClickBackHandler}
+        isFocusedFoolishPleasure={isFocused.foolishPleasure}
         onClickCream={creamClickHandler}
+        onClickBackCream={creamClickBackHandler}
+        isFocusedCream={isFocused.cream}
         onClickUntitled={untitledClickHandler}
+        onClickBackUntitled={untitledClickBackHandler}
+        isFocusedUntitled={isFocused.untitled}
       />
 
       <WorksSM
         bakedTexture={bakedTexture}
         onClickInflatableLeather={inflatableLeatherClickHandler}
+        onClickBackInflatableLeather={inflatableLeatherClickBackHandler}
+        isFocusedInflatableLeather={isFocused.inflatableLeather}
         onClickEdgeStools={edgeStoolsClickHandler}
+        onClickBackEdgeStools={edgeStoolsClickBackHandler}
+        isFocusedEdgeStools={isFocused.edgeStools}
         onClickWallObjects={wallObjectsClickHandler}
+        onClickBackWallObjects={wallObjectsClickBackHandler}
+        isFocusedWallObjects={isFocused.wallObjects}
       />
 
       <WorksTE
         bakedTexture={bakedTexture}
         onClickAmbienceOfLight={ambienceOfLightClickHandler}
+        onClickBackAmbienceOfLight={ambienceOfLightClickBackHandler}
+        isFocusedAmbienceOfLight={isFocused.ambienceOfLight}
       />
 
       <Banners

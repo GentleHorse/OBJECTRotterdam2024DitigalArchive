@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { OrbitControls, Environment } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import HakaBuilding from "./components/haka-building/HakaBuilding.jsx";
 import WorksBanners from "./components/works-banners/WorksBanners.jsx";
 import { Perf } from "r3f-perf";
@@ -7,11 +6,9 @@ import { Perf } from "r3f-perf";
 export default function Experience() {
   return (
     <>
-      {/* <OrbitControls makeDefault /> */}
-
       {/* <axesHelper args={[30]} /> */}
 
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
 
       <directionalLight position={[4, 4, 1]} intensity={4.5} />
       <ambientLight intensity={0.5} />

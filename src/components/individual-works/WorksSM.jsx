@@ -1,13 +1,26 @@
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useGLTF, Text } from "@react-three/drei";
 import Placeholder from "../../components/utils/PlaceHolder.jsx";
 
 export default function WorksSM({
   bakedTexture,
   onClickInflatableLeather,
+  onClickBackInflatableLeather,
+  isFocusedInflatableLeather,
   onClickEdgeStools,
+  onClickBackEdgeStools,
+  isFocusedEdgeStools,
   onClickWallObjects,
+  onClickBackWallObjects,
+  isFocusedWallObjects,
 }) {
+  // Change mouse pointer
+  const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    document.body.style.cursor = hovered ? "pointer" : "auto";
+  }, [hovered]);
+
   // Logic of toggling titles of works
   const [isTitle, setIsTitle] = useState({
     inflatableLeather: false,
@@ -46,6 +59,9 @@ export default function WorksSM({
   const wallObjectsMouseEnterHandler = () => {
     titleToggleHandler("wallObjects");
   };
+  const finishFocusedMouseEnterHandler = () => {
+    setHovered(true);
+  };
 
   // Mouse pointer leave event handlers
   const inflatableLeatherMouseLeaveHandler = () => {
@@ -57,6 +73,156 @@ export default function WorksSM({
   const wallObjectsMouseLeaveHandler = () => {
     titleToggleHandler("wallObjects");
   };
+  const finishFocusedMouseLeaveHandler = () => {
+    setHovered(false);
+  };
+
+  // Works texts
+  const inflatableLeatherText = (
+    <>
+      <Text
+        position={[0, 0, 0]}
+        fontSize={1.5}
+        font="./fonts/cormorant-garamond-v16-latin-300.woff"
+        color="snow"
+        anchorX="center"
+        anchorY="middle"
+      >
+        Inflatable Leather
+      </Text>
+      <Text
+        position={[0, -1.5, 0]}
+        fontSize={0.8}
+        font="./fonts/cormorant-garamond-v16-latin-300.woff"
+        color="snow"
+        anchorX="center"
+        anchorY="middle"
+      >
+        designed by Satomi Minoshima
+      </Text>
+    </>
+  );
+  const inflatableLeatherCloseIcon = (
+    <group position={[0, 2, 0]}>
+      <Text
+        fontSize={0.6}
+        maxWidth={2.7}
+        font="./fonts/cormorant-garamond-v16-latin-300.woff"
+        color="snow"
+        anchorX="center"
+        anchorY="middle"
+      >
+        X
+      </Text>
+      <mesh
+        scale={[1.2, 1.2, 1]}
+        onClick={onClickBackInflatableLeather}
+        onPointerEnter={finishFocusedMouseEnterHandler}
+        onPointerLeave={finishFocusedMouseLeaveHandler}
+      >
+        <planeGeometry />
+        <meshBasicMaterial color="#656765" />
+      </mesh>
+    </group>
+  );
+
+  const edgeStoolsText = (
+    <>
+      <Text
+        position={[0, 0, 0]}
+        fontSize={1.5}
+        font="./fonts/cormorant-garamond-v16-latin-300.woff"
+        color="snow"
+        anchorX="center"
+        anchorY="middle"
+      >
+        Edge Stools
+      </Text>
+      <Text
+        position={[0, -1.5, 0]}
+        fontSize={0.8}
+        font="./fonts/cormorant-garamond-v16-latin-300.woff"
+        color="snow"
+        anchorX="center"
+        anchorY="middle"
+      >
+        designed by Satomi Minoshima
+      </Text>
+    </>
+  );
+
+  const edgeStoolsCloseIcon = (
+    <group position={[0, 2, 0]}>
+      <Text
+        fontSize={0.6}
+        maxWidth={2.7}
+        font="./fonts/cormorant-garamond-v16-latin-300.woff"
+        color="snow"
+        anchorX="center"
+        anchorY="middle"
+      >
+        X
+      </Text>
+      <mesh
+        scale={[1.2, 1.2, 1]}
+        onClick={onClickBackEdgeStools}
+        onPointerEnter={finishFocusedMouseEnterHandler}
+        onPointerLeave={finishFocusedMouseLeaveHandler}
+      >
+        <planeGeometry />
+        <meshBasicMaterial color="#656765" />
+      </mesh>
+    </group>
+  );
+
+  const wallObjectsText = (
+    <>
+      <Text
+        position={[0, 0, 0]}
+        fontSize={1.5}
+        font="./fonts/cormorant-garamond-v16-latin-300.woff"
+        color="snow"
+        anchorX="center"
+        anchorY="middle"
+      >
+        Wall Objects
+      </Text>
+      <Text
+        position={[0, -1.5, 0]}
+        fontSize={0.8}
+        font="./fonts/cormorant-garamond-v16-latin-300.woff"
+        color="snow"
+        anchorX="center"
+        anchorY="middle"
+      >
+        designed by Satomi Minoshima
+      </Text>
+    </>
+  );
+
+  const wallObjectsCloseIcon = (
+    <group position={[0, 2, 0]}>
+      <Text
+        fontSize={0.6}
+        maxWidth={2.7}
+        font="./fonts/cormorant-garamond-v16-latin-300.woff"
+        color="snow"
+        anchorX="center"
+        anchorY="middle"
+      >
+        X
+      </Text>
+      <mesh
+        scale={[1.2, 1.2, 1]}
+        onClick={onClickBackWallObjects}
+        onPointerEnter={finishFocusedMouseEnterHandler}
+        onPointerLeave={finishFocusedMouseLeaveHandler}
+      >
+        <planeGeometry />
+        <meshBasicMaterial color="#656765" />
+      </mesh>
+    </group>
+  );
 
   return (
     <>
@@ -90,28 +256,16 @@ export default function WorksSM({
           <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
-        {isTitle.inflatableLeather && (
-          <group position={[10, 12, 4]} rotation={[0, -Math.PI, 0]}>
-            <Text
-              position={[0, 0, 0]}
-              fontSize={1.5}
-              font="./fonts/cormorant-garamond-v16-latin-300.woff"
-              color="snow"
-              anchorX="center"
-              anchorY="middle"
-            >
-              Inflatable Leather
-            </Text>
-            <Text
-              position={[0, -1.5, 0]}
-              fontSize={0.8}
-              font="./fonts/cormorant-garamond-v16-latin-300.woff"
-              color="snow"
-              anchorX="center"
-              anchorY="middle"
-            >
-              designed by Satomi Minoshima
-            </Text>
+        {isTitle.inflatableLeather && !isFocusedInflatableLeather && (
+          <group position={[9, 12, 0]} rotation={[0, -Math.PI * 0.95, 0]}>
+            {inflatableLeatherText}
+          </group>
+        )}
+
+        {isFocusedInflatableLeather && (
+          <group position={[9, 12, 0]} rotation={[0, -Math.PI * 0.95, 0]}>
+            {inflatableLeatherText}
+            {inflatableLeatherCloseIcon}
           </group>
         )}
 
@@ -126,28 +280,14 @@ export default function WorksSM({
           <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
-        {isTitle.edgeStools && (
-          <group position={[15, 8, 8]}>
-            <Text
-              position={[0, 0, 0]}
-              fontSize={1.5}
-              font="./fonts/cormorant-garamond-v16-latin-300.woff"
-              color="snow"
-              anchorX="center"
-              anchorY="middle"
-            >
-              Edge Stools
-            </Text>
-            <Text
-              position={[0, -1.5, 0]}
-              fontSize={0.8}
-              font="./fonts/cormorant-garamond-v16-latin-300.woff"
-              color="snow"
-              anchorX="center"
-              anchorY="middle"
-            >
-              designed by Satomi Minoshima
-            </Text>
+        {isTitle.edgeStools && !isFocusedEdgeStools && (
+          <group position={[17, 8, 8]}>{edgeStoolsText}</group>
+        )}
+
+        {isFocusedEdgeStools && (
+          <group position={[18, 8, 8]}>
+            {edgeStoolsText}
+            {edgeStoolsCloseIcon}
           </group>
         )}
 
@@ -162,28 +302,16 @@ export default function WorksSM({
           <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
-        {isTitle.wallObjects && (
+        {isTitle.wallObjects && !isFocusedWallObjects && (
           <group position={[27, 11, -10]} rotation={[0, -Math.PI * 0.25, 0]}>
-            <Text
-              position={[0, 0, 0]}
-              fontSize={1.5}
-              font="./fonts/cormorant-garamond-v16-latin-300.woff"
-              color="snow"
-              anchorX="center"
-              anchorY="middle"
-            >
-              Wall Objects
-            </Text>
-            <Text
-              position={[0, -1.5, 0]}
-              fontSize={0.8}
-              font="./fonts/cormorant-garamond-v16-latin-300.woff"
-              color="snow"
-              anchorX="center"
-              anchorY="middle"
-            >
-              designed by Satomi Minoshima
-            </Text>
+            {wallObjectsText}
+          </group>
+        )}
+
+        {isFocusedWallObjects && (
+          <group position={[27, 11, -10]} rotation={[0, -Math.PI * 0.25, 0]}>
+            {wallObjectsText}
+            {wallObjectsCloseIcon}
           </group>
         )}
       </Suspense>
