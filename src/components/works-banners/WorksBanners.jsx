@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useTexture, CameraControls } from "@react-three/drei";
+import { useTexture, CameraControls, Text } from "@react-three/drei";
 import WorksJB from "../individual-works/WorksJB.jsx";
 import WorksSM from "../individual-works/WorksSM.jsx";
 import WorksTE from "../individual-works/WorksTE.jsx";
@@ -109,7 +109,7 @@ export default function WorksBanners() {
     inflatableLeatherZoomOutCameraTarget: [0.0, 0.0, 0.0],
     edgeStoolsZoomOutCameraPosition: [28.68, 13.61, 61.02],
     edgeStoolsZoomOutCameraTarget: [0.0, 0.0, 0.0],
-    wallObjectsZoomOutCameraPosition: [0.00, 12.47, 58.69],
+    wallObjectsZoomOutCameraPosition: [0.0, 12.47, 58.69],
     wallObjectsZoomOutCameraTarget: [0.0, 0.0, 0.0],
 
     // TE work
@@ -144,6 +144,7 @@ export default function WorksBanners() {
     );
 
     focusOffHandler("metamorphosis");
+    document.body.style.cursor = "auto";
   };
 
   const foolishPleasureClickHandler = () => {
@@ -171,6 +172,7 @@ export default function WorksBanners() {
     );
 
     focusOffHandler("foolishPleasure");
+    document.body.style.cursor = "auto";
   };
 
   const creamClickHandler = () => {
@@ -198,6 +200,7 @@ export default function WorksBanners() {
     );
 
     focusOffHandler("cream");
+    document.body.style.cursor = "auto";
   };
 
   const untitledClickHandler = () => {
@@ -225,6 +228,7 @@ export default function WorksBanners() {
     );
 
     focusOffHandler("untitled");
+    document.body.style.cursor = "auto";
   };
 
   // SM works
@@ -253,6 +257,7 @@ export default function WorksBanners() {
     );
 
     focusOffHandler("inflatableLeather");
+    document.body.style.cursor = "auto";
   };
 
   const edgeStoolsClickHandler = () => {
@@ -280,6 +285,7 @@ export default function WorksBanners() {
     );
 
     focusOffHandler("edgeStools");
+    document.body.style.cursor = "auto";
   };
 
   const wallObjectsClickHandler = () => {
@@ -307,6 +313,7 @@ export default function WorksBanners() {
     );
 
     focusOffHandler("wallObjects");
+    document.body.style.cursor = "auto";
   };
 
   // TE work
@@ -335,6 +342,7 @@ export default function WorksBanners() {
     );
 
     focusOffHandler("ambienceOfLight");
+    document.body.style.cursor = "auto";
   };
 
   // Exhibition banner
@@ -444,6 +452,76 @@ export default function WorksBanners() {
         onClickSMBanner={SMBannerClickHandler}
         onClickTEBanner={TEBannerClickHandler}
       />
+
+      <group position={[34.5, 17, -5]} rotation={[0, Math.PI, 0]}>
+        <Text
+          position={[3.8, 0, 0]}
+          fontSize={0.9}
+          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
+          color="#080808"
+          anchorX="right"
+          anchorY="middle"
+        >
+          Designers {">>"}
+        </Text>
+
+        <Text
+          position={[3.8, -2, 0]}
+          fontSize={0.9}
+          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
+          color="#080808"
+          anchorX="right"
+          anchorY="middle"
+        >
+          Works {">"}
+        </Text>
+
+        <Text
+          position={[-3.8, -4, 0]}
+          fontSize={0.9}
+          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
+          color="#080808"
+          anchorX="left"
+          anchorY="middle"
+        >
+          {"<"} Expo Info
+        </Text>
+      </group>
+
+      <group position={[-34.5, 17, -5]} rotation={[0, Math.PI, 0]}>
+        <Text
+          position={[3.9, 0, 0]}
+          fontSize={0.9}
+          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
+          color="#080808"
+          anchorX="right"
+          anchorY="middle"
+        >
+          Designers {">"}
+        </Text>
+
+        <Text
+          position={[-3.5, -2, 0]}
+          fontSize={0.9}
+          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
+          color="#080808"
+          anchorX="left"
+          anchorY="middle"
+        >
+          {"<"} Works
+        </Text>
+
+        <Text
+          position={[-3.5, -4, 0]}
+          fontSize={0.9}
+          font="./fonts/shippori-mincho-b1-v21-japanese-800.woff"
+          color="#080808"
+          anchorX="left"
+          anchorY="middle"
+        >
+          {"<<"} Expo Info
+        </Text>
+      </group>
     </>
   );
 }
