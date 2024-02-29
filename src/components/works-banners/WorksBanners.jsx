@@ -100,7 +100,7 @@ export default function WorksBanners() {
     metamorphosisZoomOutCameraTarget: [0.0, 0.0, 0.0],
     foolishPleasureZoomOutCameraPosition: [-43.33, 18.98, 48.38],
     foolishPleasureZoomOutCameraTarget: [0.0, 0.0, 0.0],
-    creamZoomOutCameraPosition: [30.3, 3.0, -11.58],
+    creamZoomOutCameraPosition: [-44.36, 8.50, 60.38],
     creamZoomOutCameraTarget: [0.0, 0.0, 0.0],
     untitledZoomOutCameraPosition: [6.68, 8.0, 73.91],
     untitledZoomOutCameraTarget: [0.0, 0.0, 0.0],

@@ -134,7 +134,7 @@ export default function WorksJB({
     <>
       <Text
         position={[0, 0, 0]}
-        fontSize={1.5}
+        fontSize={1.2}
         font="./fonts/cormorant-garamond-v16-latin-300.woff"
         color="snow"
         anchorX="center"
@@ -143,8 +143,8 @@ export default function WorksJB({
         A Foolish Pleasure in Wicked Schemes
       </Text>
       <Text
-        position={[0, -1.5, 0]}
-        fontSize={0.8}
+        position={[0, -1.2, 0]}
+        fontSize={0.7}
         font="./fonts/cormorant-garamond-v16-latin-300.woff"
         color="snow"
         anchorX="center"
@@ -155,7 +155,7 @@ export default function WorksJB({
     </>
   );
   const foolishPleasureCloseIcon = (
-    <group position={[0, 22, 4]}>
+    <group position={[0, -1.2, 4]} rotation={[-Math.PI * 0.2, 0, 0]}>
       <Text
         fontSize={0.6}
         maxWidth={2.7}
@@ -182,7 +182,7 @@ export default function WorksJB({
     <>
       <Text
         position={[0, 0, 0]}
-        fontSize={1.3}
+        fontSize={0.8}
         font="./fonts/cormorant-garamond-v16-latin-300.woff"
         color="snow"
         anchorX="center"
@@ -191,8 +191,8 @@ export default function WorksJB({
         C.R.E.A.M.
       </Text>
       <Text
-        position={[0, -1.3, 0]}
-        fontSize={0.7}
+        position={[0, -0.7, 0]}
+        fontSize={0.5}
         font="./fonts/cormorant-garamond-v16-latin-300.woff"
         color="snow"
         anchorX="center"
@@ -203,9 +203,9 @@ export default function WorksJB({
     </>
   );
   const creamCloseIcon = (
-    <group position={[0, 9, 0]}>
+    <group position={[0, 0.94, 0]}>
       <Text
-        fontSize={0.6}
+        fontSize={0.4}
         maxWidth={2.7}
         font="./fonts/cormorant-garamond-v16-latin-300.woff"
         color="snow"
@@ -215,7 +215,7 @@ export default function WorksJB({
         X
       </Text>
       <mesh
-        scale={[1.2, 1.2, 1]}
+        scale={[0.7, 0.7, 1]}
         onClick={(e) => (onClickBackCream(), e.stopPropagation())}
         onPointerEnter={finishFocusedMouseEnterHandler}
         onPointerLeave={finishFocusedMouseLeaveHandler}
@@ -227,7 +227,7 @@ export default function WorksJB({
   );
 
   const untitledCloseIcon = (
-    <group position={[0, 9, 0]}>
+    <group position={[0, -0.4, 0]}>
       <Text
         fontSize={0.6}
         maxWidth={2.7}
@@ -297,13 +297,13 @@ export default function WorksJB({
         </mesh>
 
         {isTitle.foolishPleasure && !isFocusedFoolishPleasure && (
-          <group position={[-25, 2.3, 0]} rotation={[0, Math.PI * 0.5, 0]}>
+          <group position={[-25, 1.65, 0]} rotation={[0, Math.PI * 0.5, 0]}>
             {foolishPleasureText}
           </group>
         )}
 
         {isFocusedFoolishPleasure && (
-          <group position={[-25, 2.3, 0]} rotation={[0, Math.PI * 0.5, 0]}>
+          <group position={[-25, 1.65, 0]} rotation={[0, Math.PI * 0.5, 0]}>
             {foolishPleasureText}
             {foolishPleasureCloseIcon}
           </group>
@@ -321,13 +321,13 @@ export default function WorksJB({
         </mesh>
 
         {isTitle.cream && !isFocusedCream && (
-          <group position={[-8, 9, 22]} rotation={[0, -Math.PI * 0.5, 0]}>
+          <group position={[-8, 8.2, 22]} rotation={[0, -Math.PI * 0.5, 0]}>
             {creamText}
           </group>
         )}
 
         {isFocusedCream && (
-          <group position={[-8, 9, 22]} rotation={[0, -Math.PI * 0.5, 0]}>
+          <group position={[-8, 8.2, 22]} rotation={[0, -Math.PI * 0.5, 0]}>
             {creamText}
             {creamCloseIcon}
           </group>
