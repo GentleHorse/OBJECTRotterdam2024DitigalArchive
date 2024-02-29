@@ -57,14 +57,14 @@ export default function Banners({
       <group position={[0, 0, 0]} rotation={[0, Math.PI * 0.5, 0]}>
         <mesh
           geometry={exhibitionBanner.nodes.exhibitionBannerRe.geometry}
-          onClick={onClickExhibitionBanner}
+          onClick={(e) => (onClickExhibitionBanner(), e.stopPropagation())}
         >
           <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
         <mesh
           geometry={urlLinks.nodes.urlLinkExhibition.geometry}
-          onClick={exhibitionBannerClickHandler}
+          onClick={(e) => (exhibitionBannerClickHandler(), e.stopPropagation())}
           onPointerEnter={bannerMouseEnterHandler}
           onPointerLeave={bannerMouseLeaveHandler}
         >
@@ -73,14 +73,14 @@ export default function Banners({
 
         <mesh
           geometry={designersBanner.nodes.jbBannerRe.geometry}
-          onClick={onClickJBBanner}
+          onClick={(e) => (onClickJBBanner(), e.stopPropagation())}
         >
           <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
         </mesh>
 
         <mesh
           geometry={urlLinks.nodes.urlLinkJB.geometry}
-          onClick={JBBannerClickHandler}
+          onClick={(e) => (JBBannerClickHandler(), e.stopPropagation())}
           onPointerEnter={bannerMouseEnterHandler}
           onPointerLeave={bannerMouseLeaveHandler}
         >
@@ -89,14 +89,14 @@ export default function Banners({
 
         <mesh
           geometry={designersBanner.nodes.smBannerRe.geometry}
-          onClick={onClickSMBanner}
+          onClick={(e) => (onClickSMBanner(), e.stopPropagation())}
         >
           <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
         </mesh>
 
         <mesh
           geometry={urlLinks.nodes.urlLinkSM.geometry}
-          onClick={SMBannerClickHandler}
+          onClick={(e) => (SMBannerClickHandler(), e.stopPropagation())}
           onPointerEnter={bannerMouseEnterHandler}
           onPointerLeave={bannerMouseLeaveHandler}
         >
@@ -105,14 +105,14 @@ export default function Banners({
 
         <mesh
           geometry={designersBanner.nodes.teBannerRe.geometry}
-          onClick={onClickTEBanner}
+          onClick={(e) => (onClickTEBanner(), e.stopPropagation())}
         >
           <meshBasicMaterial map={bakedTexture} side={THREE.DoubleSide} />
         </mesh>
 
         <mesh
           geometry={urlLinks.nodes.urlLinkTE.geometry}
-          onClick={TEBannerClickHandler}
+          onClick={(e) => (TEBannerClickHandler(), e.stopPropagation())}
           onPointerEnter={bannerMouseEnterHandler}
           onPointerLeave={bannerMouseLeaveHandler}
         >

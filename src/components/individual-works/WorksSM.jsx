@@ -116,7 +116,7 @@ export default function WorksSM({
       </Text>
       <mesh
         scale={[1.2, 1.2, 1]}
-        onClick={onClickBackInflatableLeather}
+        onClick={(e) => (onClickBackInflatableLeather(), e.stopPropagation())}
         onPointerEnter={finishFocusedMouseEnterHandler}
         onPointerLeave={finishFocusedMouseLeaveHandler}
       >
@@ -165,7 +165,7 @@ export default function WorksSM({
       </Text>
       <mesh
         scale={[1.2, 1.2, 1]}
-        onClick={onClickBackEdgeStools}
+        onClick={(e) => (onClickBackEdgeStools(), e.stopPropagation())}
         onPointerEnter={finishFocusedMouseEnterHandler}
         onPointerLeave={finishFocusedMouseLeaveHandler}
       >
@@ -214,7 +214,7 @@ export default function WorksSM({
       </Text>
       <mesh
         scale={[1.2, 1.2, 1]}
-        onClick={onClickBackWallObjects}
+        onClick={(e) => (onClickBackWallObjects(), e.stopPropagation())}
         onPointerEnter={finishFocusedMouseEnterHandler}
         onPointerLeave={finishFocusedMouseLeaveHandler}
       >
@@ -249,7 +249,7 @@ export default function WorksSM({
           geometry={worksSM.nodes.inflatableLeatherRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
-          onClick={onClickInflatableLeather}
+          onClick={(e) => (onClickInflatableLeather(), e.stopPropagation())}
           onPointerEnter={inflatableLeatherMouseEnterHandler}
           onPointerLeave={inflatableLeatherMouseLeaveHandler}
         >
@@ -273,7 +273,7 @@ export default function WorksSM({
           geometry={worksSM.nodes.edgeStoolsRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
-          onClick={onClickEdgeStools}
+          onClick={(e) => (onClickEdgeStools(), e.stopPropagation())}
           onPointerEnter={edgeStoolsMouseEnterHandler}
           onPointerLeave={edgeStoolsMouseLeaveHandler}
         >
@@ -295,7 +295,7 @@ export default function WorksSM({
           geometry={worksSM.nodes.wallObjectsRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
-          onClick={onClickWallObjects}
+          onClick={(e) => (onClickWallObjects(), e.stopPropagation())}
           onPointerEnter={wallObjectsMouseEnterHandler}
           onPointerLeave={wallObjectsMouseLeaveHandler}
         >

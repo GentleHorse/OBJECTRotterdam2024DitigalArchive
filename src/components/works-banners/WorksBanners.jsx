@@ -106,7 +106,7 @@ export default function WorksBanners() {
     untitledZoomOutCameraTarget: [0.0, 0.0, 0.0],
 
     // SM works
-    inflatableLeatherZoomOutCameraPosition: [-14.94, 7.38, 57.66],
+    inflatableLeatherZoomOutCameraPosition: [2.46, 18.77, -45.08],
     inflatableLeatherZoomOutCameraTarget: [0.0, 0.0, 0.0],
     edgeStoolsZoomOutCameraPosition: [28.68, 13.61, 61.02],
     edgeStoolsZoomOutCameraTarget: [0.0, 0.0, 0.0],

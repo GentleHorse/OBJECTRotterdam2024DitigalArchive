@@ -120,7 +120,7 @@ export default function WorksJB({
       </Text>
       <mesh
         scale={[1.2, 1.2, 1]}
-        onClick={onClickBackMetamorphosis}
+        onClick={(e) => (onClickBackMetamorphosis(), e.stopPropagation())}
         onPointerEnter={finishFocusedMouseEnterHandler}
         onPointerLeave={finishFocusedMouseLeaveHandler}
       >
@@ -168,7 +168,7 @@ export default function WorksJB({
       </Text>
       <mesh
         scale={[1.2, 1.2, 1]}
-        onClick={onClickBackFoolishPleasure}
+        onClick={(e) => (onClickBackFoolishPleasure(), e.stopPropagation())}
         onPointerEnter={finishFocusedMouseEnterHandler}
         onPointerLeave={finishFocusedMouseLeaveHandler}
       >
@@ -216,7 +216,7 @@ export default function WorksJB({
       </Text>
       <mesh
         scale={[1.2, 1.2, 1]}
-        onClick={onClickBackCream}
+        onClick={(e) => (onClickBackCream(), e.stopPropagation())}
         onPointerEnter={finishFocusedMouseEnterHandler}
         onPointerLeave={finishFocusedMouseLeaveHandler}
       >
@@ -240,7 +240,7 @@ export default function WorksJB({
       </Text>
       <mesh
         scale={[1.2, 1.2, 1]}
-        onClick={onClickBackUntitled}
+        onClick={(e) => (onClickBackUntitled(), e.stopPropagation())}
         onPointerEnter={finishFocusedMouseEnterHandler}
         onPointerLeave={finishFocusedMouseLeaveHandler}
       >
@@ -265,7 +265,7 @@ export default function WorksJB({
           geometry={worksJB.nodes.metamorphosis.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
-          onClick={onClickMetamorphosis}
+          onClick={(e) => (onClickMetamorphosis(), e.stopPropagation())}
           onPointerEnter={metamorphosisMouseEnterHandler}
           onPointerLeave={metamorphosisMouseLeaveHandler}
         >
@@ -289,7 +289,7 @@ export default function WorksJB({
           geometry={worksJB.nodes.foolishPleasureRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
-          onClick={onClickFoolishPleasure}
+          onClick={(e) => (onClickFoolishPleasure(), e.stopPropagation())}
           onPointerEnter={foolishPleasureMouseEnterHandler}
           onPointerLeave={foolishPleasureMouseLeaveHandler}
         >
@@ -313,7 +313,7 @@ export default function WorksJB({
           geometry={worksJB.nodes.creamRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
-          onClick={onClickCream}
+          onClick={(e) => (onClickCream(), e.stopPropagation())}
           onPointerEnter={creamMouseEnterHandler}
           onPointerLeave={creamMouseLeaveHandler}
         >
@@ -337,7 +337,7 @@ export default function WorksJB({
           geometry={worksJB.nodes.untitledRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
-          onClick={onClickUntitled}
+          onClick={(e) => (onClickUntitled(), e.stopPropagation())}
         >
           <meshBasicMaterial map={bakedTexture} />
         </mesh>

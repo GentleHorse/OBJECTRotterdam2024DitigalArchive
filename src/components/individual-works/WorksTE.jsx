@@ -76,7 +76,7 @@ export default function WorksTE({
       </Text>
       <mesh
         scale={[1.2, 1.2, 1]}
-        onClick={onClickBackAmbienceOfLight}
+        onClick={(e) => (onClickBackAmbienceOfLight(), e.stopPropagation())}
         onPointerEnter={finishFocusedMouseEnterHandler}
         onPointerLeave={finishFocusedMouseLeaveHandler}
       >
@@ -100,7 +100,7 @@ export default function WorksTE({
           geometry={worksTE.nodes.ambienceOfLightRe.geometry}
           position={[0, 0, 0]}
           rotation={[0, Math.PI * 0.5, 0]}
-          onClick={onClickAmbienceOfLight}
+          onClick={(e) => (onClickAmbienceOfLight(), e.stopPropagation())}
           onPointerEnter={ambienceOfLightMouseEnterHandler}
           onPointerLeave={ambienceOfLightMouseLeaveHandler}
         >

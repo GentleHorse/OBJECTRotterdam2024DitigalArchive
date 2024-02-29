@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { Text } from "@react-three/drei";
 
-export default function Stickers({ onClickExhibitionBanner, onClickWorks, onClickDesignerBanners }) {
+export default function Stickers({
+  onClickExhibitionBanner,
+  onClickWorks,
+  onClickDesignerBanners,
+}) {
   // Change mouse pointer
   const [hovered, setHovered] = useState(false);
 
@@ -29,7 +33,7 @@ export default function Stickers({ onClickExhibitionBanner, onClickWorks, onClic
           color="#080808"
           anchorX="right"
           anchorY="middle"
-          onClick={onClickDesignerBanners}
+          onClick={(e) => (onClickDesignerBanners(), e.stopPropagation())}
           onPointerEnter={mousePointerEnterHandler}
           onPointerLeave={mousePointerLeaveHandler}
         >
@@ -43,7 +47,7 @@ export default function Stickers({ onClickExhibitionBanner, onClickWorks, onClic
           color="#080808"
           anchorX="right"
           anchorY="middle"
-          onClick={onClickWorks}
+          onClick={(e) => (onClickWorks(), e.stopPropagation())}
           onPointerEnter={mousePointerEnterHandler}
           onPointerLeave={mousePointerLeaveHandler}
         >
@@ -57,7 +61,7 @@ export default function Stickers({ onClickExhibitionBanner, onClickWorks, onClic
           color="#080808"
           anchorX="left"
           anchorY="middle"
-          onClick={onClickExhibitionBanner}
+          onClick={(e) => (onClickExhibitionBanner(), e.stopPropagation())}
           onPointerEnter={mousePointerEnterHandler}
           onPointerLeave={mousePointerLeaveHandler}
         >
@@ -73,7 +77,7 @@ export default function Stickers({ onClickExhibitionBanner, onClickWorks, onClic
           color="#080808"
           anchorX="right"
           anchorY="middle"
-          onClick={onClickDesignerBanners}
+          onClick={(e) => (onClickDesignerBanners(), e.stopPropagation())}
           onPointerEnter={mousePointerEnterHandler}
           onPointerLeave={mousePointerLeaveHandler}
         >
@@ -87,7 +91,7 @@ export default function Stickers({ onClickExhibitionBanner, onClickWorks, onClic
           color="#080808"
           anchorX="left"
           anchorY="middle"
-          onClick={onClickWorks}
+          onClick={(e) => (onClickWorks(), e.stopPropagation())}
           onPointerEnter={mousePointerEnterHandler}
           onPointerLeave={mousePointerLeaveHandler}
         >
@@ -101,7 +105,7 @@ export default function Stickers({ onClickExhibitionBanner, onClickWorks, onClic
           color="#080808"
           anchorX="left"
           anchorY="middle"
-          onClick={onClickExhibitionBanner}
+          onClick={(e) => (onClickExhibitionBanner(), e.stopPropagation())}
           onPointerEnter={mousePointerEnterHandler}
           onPointerLeave={mousePointerLeaveHandler}
         >
@@ -117,7 +121,7 @@ export default function Stickers({ onClickExhibitionBanner, onClickWorks, onClic
           color="#080808"
           anchorX="left"
           anchorY="middle"
-          onClick={onClickDesignerBanners}
+          onClick={(e) => (onClickDesignerBanners(), e.stopPropagation())}
           onPointerEnter={mousePointerEnterHandler}
           onPointerLeave={mousePointerLeaveHandler}
         >
@@ -131,7 +135,7 @@ export default function Stickers({ onClickExhibitionBanner, onClickWorks, onClic
           color="#080808"
           anchorX="right"
           anchorY="middle"
-          onClick={onClickWorks}
+          onClick={(e) => (onClickWorks(), e.stopPropagation())}
           onPointerEnter={mousePointerEnterHandler}
           onPointerLeave={mousePointerLeaveHandler}
         >
@@ -145,7 +149,7 @@ export default function Stickers({ onClickExhibitionBanner, onClickWorks, onClic
           color="#080808"
           anchorX="right"
           anchorY="middle"
-          onClick={onClickExhibitionBanner}
+          onClick={(e) => (onClickExhibitionBanner(), e.stopPropagation())}
           onPointerEnter={mousePointerEnterHandler}
           onPointerLeave={mousePointerLeaveHandler}
         >
