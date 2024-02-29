@@ -17,7 +17,6 @@ export default function Experience() {
 
       <group scale={1} position={[0, -5, 0]}>
         <HakaBuilding />
-
         <WorksBanners />
       </group>
     </>
