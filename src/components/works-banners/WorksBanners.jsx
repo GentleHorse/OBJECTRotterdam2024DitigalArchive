@@ -1,12 +1,12 @@
+import * as THREE from "three";
 import { useRef, useState } from "react";
-import { useTexture, CameraControls, Text } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+import { useTexture, CameraControls } from "@react-three/drei";
 import WorksJB from "../individual-works/WorksJB.jsx";
 import WorksSM from "../individual-works/WorksSM.jsx";
 import WorksTE from "../individual-works/WorksTE.jsx";
 import Banners from "../banners/Banners.jsx";
 import Stickers from "../stickers/Stickers.jsx";
-
-import CustomCamera from "../utils/CustomCamera.jsx";
 
 export default function WorksBanners() {
   // Zoom in camera logic set up
@@ -100,7 +100,7 @@ export default function WorksBanners() {
     metamorphosisZoomOutCameraTarget: [0.0, 0.0, 0.0],
     foolishPleasureZoomOutCameraPosition: [-43.33, 18.98, 48.38],
     foolishPleasureZoomOutCameraTarget: [0.0, 0.0, 0.0],
-    creamZoomOutCameraPosition: [-44.36, 8.50, 60.38],
+    creamZoomOutCameraPosition: [-44.36, 8.5, 60.38],
     creamZoomOutCameraTarget: [0.0, 0.0, 0.0],
     untitledZoomOutCameraPosition: [6.68, 8.0, 73.91],
     untitledZoomOutCameraTarget: [0.0, 0.0, 0.0],
@@ -122,8 +122,8 @@ export default function WorksBanners() {
     worksInitialCameraTarget: [0.0, 0.0, 0.0],
 
     // Go to the designer banners overview position & target
-    designerbannersCameraPosition: [-50.43, 10.00, -62.62],
-    designerbannersCameraTarget: [-64.46, 10.00, 1.31],
+    designerbannersCameraPosition: [-50.43, 10.0, -62.62],
+    designerbannersCameraTarget: [-64.46, 10.0, 1.31],
   };
 
   // Zoom in & out camera logic click handlers
@@ -441,8 +441,6 @@ export default function WorksBanners() {
   return (
     <>
       <CameraControls ref={cameraControlsRef} makeDefault />
-
-      {/* <CustomCamera /> */}
 
       <WorksJB
         bakedTexture={bakedTexture}
