@@ -30,7 +30,7 @@ export default function Header() {
           href="https://object-rotterdam-2024-floor-plan.vercel.app/"
           className="
             relative flex items-center justify-center
-            w-[150px] h-[150px]
+            w-[80px] h-[80px] md:w-[150px] md:h-[150px]
             rounded-[5px] overflow-hidden
             no-underline
             transition-transform duration-200 ease-linear
@@ -55,7 +55,7 @@ export default function Header() {
           <p
             className="
         relative z-[2]
-        font-bold text-[11px]
+        font-bold text-[7.5px] md:text-[11px]
         text-white text-center whitespace-nowrap
       "
             style={{ 
