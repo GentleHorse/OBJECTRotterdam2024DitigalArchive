@@ -27,7 +27,7 @@ export default function Footer() {
             Satomi Minoshima
           </button>
         </a>
-        <a href="https://www.toshihito.design/" target="_blank">
+        <a href="https://toshihito-endo.com/" target="_blank">
           <button className="bg-none border-none outline-none shadow-none font-roboto text-xs text-stone-300 hover:text-[#4b4ee3]">
             Toshihito Endo
           </button>
