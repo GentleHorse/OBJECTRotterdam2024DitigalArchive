@@ -64,21 +64,21 @@ export default function WorksBanners() {
     // Zoom-in Position
     // JB works
     metamorphosisZoomInCameraPosition: [-10.04, 7.22, -62.34],
-    metamorphosisZoomInCameraTarget: [-11.21, 9.17, 0.0],
+    metamorphosisZoomInCameraTarget: [-11.21, 9.17, -35.0],
     foolishPleasureZoomInCameraPosition: [20.56, 8.7, 0.0],
-    foolishPleasureZoomInCameraTarget: [-89.18, 5.35, 2.13],
+    foolishPleasureZoomInCameraTarget: [-15.0, 5.0, 0.0],
     creamZoomInCameraPosition: [-26.53, 8.5, 23.0],
-    creamZoomInCameraTarget: [300.0, 0.0, 18.0],
+    creamZoomInCameraTarget: [-15.0, 8.5, 22.0],
     untitledZoomInCameraPosition: [8.7, 8.0, 12.0],
-    untitledZoomInCameraTarget: [-5.5, 8.0, 18.5],
+    untitledZoomInCameraTarget: [-4.0, 8.5, 18.0],
 
     // SM works
     inflatableLeatherZoomInCameraPosition: [1.31, 6.31, -28.55],
-    inflatableLeatherZoomInCameraTarget: [6.51, 0.0, 0.0],
+    inflatableLeatherZoomInCameraTarget: [5.0, 6.0, -10.0],
     edgeStoolsZoomInCameraPosition: [6.68, 1.31, 36.53],
-    edgeStoolsZoomInCameraTarget: [29.12, -4.48, -31.15],
+    edgeStoolsZoomInCameraTarget: [15.0, 3.5, 15.0],
     wallObjectsZoomInCameraPosition: [14.0, 9.0, 23.64],
-    wallObjectsZoomInCameraTarget: [142.72, 9.0, -118.84],
+    wallObjectsZoomInCameraTarget: [22.0, 10.0, 5.0],
 
     // TE work
     ambienceOfLightZoomInCameraPosition: [14.7, 4.0, -45.7],
