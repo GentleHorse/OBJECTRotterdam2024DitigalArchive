@@ -39,7 +39,7 @@ export default function Banners({
     openInNewTab("https://www.satomiminoshima.com/");
   };
   const TEBannerClickHandler = () => {
-    openInNewTab("https://www.toshihito.design/");
+    openInNewTab("https://toshihito-endo.com/");
   };
 
   // Mouse pointer enter event handlers
